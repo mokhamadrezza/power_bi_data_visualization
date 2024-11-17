@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengelola Datasets pada Power BI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="Judul">Mengelola Datasets pada Power BI</h1>
+        </div>
+<style>
+    
+body{
+    background-color: #fff;
+}
+
+.container{
+    background-color: #fff;
+    padding-top: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 3%;
+}
+
+.container .header{
+    color: black;
+}
+
+.Judul{
+    text-align: left;
+    font-size: 2.6vw;
+    text-align: left;
+    font-weight: bolder;
+    margin: 1%;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.content-box{
+    max-width: 90vw;
+    min-width: 30%;
+    border: 0.1vw solid #4471C4;
+    background-color: #fff;
+    box-shadow: 0.4vw 0.4vw 1.5vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.2vw;
+    margin: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    text-align: justify;
+}
+
+.content-box h2{
+    font-size: x-large;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: inline-flex;
+    align-content: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    max-width: 90vw;
+}
+
+.content-box ul{
+    list-style-type: disc;
+    padding-left: 2.5%;
+    margin-left: 1%;
+    font-size: 16px;
+    line-height: 2.5;
+    max-width: 90vw;
+}
+
+.content-box ul li{
+    max-width: 90vw;
+}
+
+.top-box{
+    margin-bottom: 0.5%;
+    max-width: 90vw;
+}
+
+.no-bullets{
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 90vw;
+}
+
+.no-bullets ul{
+    padding-left: 3%; /* Menambahkan indentasi untuk daftar bersarang */
+    max-width: 90vw;
+}
+
+.note-box{
+    display: flex;
+    max-width: 90vw;
+    height: auto;
+    padding: 1%;
+    border-radius: 1vw;
+    border: 0.1vw solid #000;
+    background-color: #CFE1F3; /* Warna latar belakang seperti catatan */
+    box-shadow: 0.3vw 0.3vw 1vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    position: relative;
+}
+
+.note-box span {
+    margin-top: 0%;
+    font-size: 1.6vw;
+    font-family: calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+    font-weight: bolder;
+}
+
+.note-box h2{
+    margin-top: 0;
+    max-width: fit-content;
+    font-size: 30px;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+
+.note-box p{
+    margin: 0;
+    max-width: 90vw;
+    font-size: 1.4vw;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+/* Style for h1 */
+h1{
+    font-size: 1.6vw; /* Ukuran font 20 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    color: #1f2855;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for h2 */
+h2{
+    font-size: 1.8vw; /* Ukuran font 18 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/*Style for h3 */
+h3 {
+    font-size: 1.6vw;
+    font-weight: bolder;
+    font-family: calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /*Jarak spasi 1/5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for p */
+p{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+/* Style for ul and ol */
+ul, ol{
+    list-style-type: decimal;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for li */
+li{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+
+.small-text{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.large-text {
+    line-height: 1.5; /* Jarak Spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    vertical-align: top;
+}
+
+.Tools{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.Tipe{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 0%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.pic {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    height: auto;
+}
+
+iframe{
+    max-width: 75%;
+    min-height: auto;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 0.1vw solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-size: 1.2vw;
+}
+th {
+    background-color: #2796a3; /* Warna Latar Belakang untuk Baris Pertama */
+    color: white;
+    text-align: center;
+    font-size: 1.2vw;
+}
+tr:hover {
+    background-color: beige;
+}
+
+font {
+    max-width: 100%;
+}
+
+.kotak {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 1.5vw;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #2796a3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<div class="content-box"> <!-- Berisi Poin-poin Konten-->
+    <h2>
+        <img src="https://drive.google.com/thumbnail?id=1OSwy6Vn5jv8ERj5uV-d5abA8LFGNXV9x" alt="Content Image" style="vertical-align: middle; margin-right: 10px; max-width: 40px; max-height: 40px; padding-top: 10px;">Content
+    </h2>
+    <ul class="no-bullets" style="list-style-type: disc;">
+        <li><a href="#mengenal-gateway-pada-power-bi" target="_blank" style="color: blue;">Mengenal Gateway pada Power BI</a></li>
+        <li><a href="#jenis-gateway-pada-power-bi" target="_blank">Jenis Gateway pada Power BI</a></li>
+        <li><a href="#cara-kerja-gateway-pada-power-bi" target="_blank">Cara Kerja Gateway pada Power BI</a></li>
+        <li><a href="#jenis-memperbaharui-dataset-pada-power-bi-service" target="_blank" style="text-decoration: underline; text-decoration-thickness: 1px;">Jenis Memperbaharui Dataset pada Power BI Service</a></li>
+        <li><a href="#mempromosikan-datasets-pada-power-bi-service" target="_blank">Mempromosikan Datasets pada Power BI Service</a></li>
+        <li><a href="#membangun-workspace-power-bi-service" target="_blank">Membangun Workspace Power BI Service</a></li>
+        <li><a href="#instalasi-gateway-untuk-power-bi-service" target="_blank">Instalasi Gateway Untuk Power BI Service</a></li>
+        <li><a href="#memperbaharui-dataset-pada-power-bi-service" target="_blank">Memperbaharui Dataset pada Power BI Service</a></li>
+        <li><a href="#mempromosikan-dataset-pada-power-bi-service" target="_blank">Mempromosikan Dataset pada Power BI Service</a></li>
+    </ul>
+    
+</div>
+
+<div class="content-box">
+    <!--Point 1-->
+    <h1 id="#mengenal-gateway-pada-power-bi">Mengenal Gateway pada Power BI</h2>
+    <p>
+        Power BI memfasilitasi pengguna untuk melakukan transfer data baik antar lokal maupun beberapa layanan pada cloud seperti Microsoft Azure dengan menggunakan Gateway. 
+        Gateway Power BI adalah perangkat lunak yang berfungsi sebagai jembatan untuk menyediakan transfer data yang cepat dan aman antara data on-premises dan beberapa layanan cloud Microsoft, termasuk Power BI, PowerApps, Power Automate, Azure Analysis Services, dan Azure Logic Apps.
+    </p>
+    <p>
+        <iframe src="https://drive.google.com/file/d/1OSSH3t_32DGtFHUGW4yt1PYsgMv6gsqT/preview" width="100%" height="300px" frame-border="0" alt="Gateway pada Power BI"></iframe>
+    </p>
+    <p>
+        Gateway memfasilitasi komunikasi cepat di balik layar yang mengalir dari satu pengguna di cloud ke sumber data lokal pengguna lain lalu kembali lagi ke cloud.
+    </p>
+
+
+    <!--Point 2-->
+    <h2 id="jenis-gateway-pada-power-bi">Jenis Gateway pada Power BI</h2>
+    <p>
+        Gateway Power BI secara umum terbagi menjadi dua tipe berdasarkan mode penggunaan, yaitu mode organisasi dan mode personal. Berikut adalah perbedaan dasar antara dua mode gateway Power BI:
+    </p>
+    
+    <ol type="1">
+        <li>
+            <b>Mode organisasi</b>: Memungkinkan beberapa pengguna untuk terhubung ke beberapa sumber data lokal dan cocok untuk skenario kompleks.
+        </li>
+        <iframe src="https://drive.google.com/file/d/15vLiAErz3LFuaP0cPZExaJgkADGb6OQi/preview" width="100%" height="300px" frame-border="0" alt="Mode Organisasi"></iframe>
+        <li>
+            <b>Mode pribadi</b>: Memungkinkan satu pengguna untuk terhubung ke sumber data. Jenis gateway ini hanya dapat digunakan dengan Power BI dan tidak dapat dibagikan dengan pengguna lain.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1lAA6-xuzHvoDlGLAFZ0rGHYyla2axmDk/preview" width="100%" height="300px" frame-border="0" alt="Mode Organisasi"></iframe>
+    </ol>
+    
+
+    <!--Point 3-->
+    <h1 id="cara-kerja-gateway-pada-power-bi">Cara Kerja Gateway pada Power BI</h1>
+    <p>
+        Gateway Power BI bekerja dibalik layar saat pengguna bekerja di cloud dan berinteraksi dengan elemen yang tersambung ke sumber data lokal, sehingga pengguna tidak perlu melakukan intervensi berlebih. 
+        Berikut hal yang terjadi ketika menggunakan gateway pada Power BI:
+    </p>
+
+    <ol type="1">
+        <li>
+            Layanan cloud membuat kueri dan kredensial terenkripsi untuk sumber data lokal. Kueri dan kredensial dikirim ke antrean gateway untuk diproses.
+        </li>
+        <li>
+            Layanan cloud gateway menganalisis kueri dan mendorong permintaan ke Microsoft Azure Service Bus.
+        </li>
+        <li>
+            Azure Service Bus mengirimkan permintaan yang tertunda ke gateway.
+        </li>
+        <li>
+            Gateway mendapatkan kueri, mendekripsi kredensial, lalu menyambungkan ke satu atau beberapa sumber data dengan kredensial tersebut.
+        </li>
+        <li>
+            Gateway mengirim kueri ke sumber data untuk dijalankan.
+        </li>
+        <li>
+            Hasil dikirimkan dari sumber data kembali ke gateway lalu ke layanan cloud. Layanan kemudian menggunakan hasilnya.
+        </li>
+        
+        <iframe src="https://drive.google.com/file/d/1cSGgx7SCpt1ugie2sh38YymkP7AaJkbs/preview" width="100%" height="300px" frame-border="0" alt="On-Premises Data Gateway"></iframe>
+    
+
+    <!-- Point 4 -->
+     <h1 id="jenis-memperbaharui-dataset-pada-power-bi-service">Jenis Memperbaharui Dataset pada Power BI Service</h1>
+     <p>
+        Mengetahui berbagai jenis refresh dapat membantu pengguna memahami di mana Power BI mungkin menghabiskan waktunya selama operasi refresh. 
+        Operasi refresh Power BI dapat terdiri dari beberapa jenis, berikut adalah perbedaan berdasarkan metode penyimpanan yang digunakan:
+     </p>
+     <table>
+        <tr>
+            <th>Mode Penyimpanan</th>
+            <th>Refresh Data</th>
+            <th>Refresh OneDrive</th>
+            <th>Refresh Cache Kueri</th>
+        </tr>
+        <tr>
+            <td><b>Impor</b></td>
+            <td>Ya, terjadwal dan sesuai permintaan</td>
+            <td>Ya, untuk himpunan data yang terhubung</td>
+            <td>Jika diaktifkan pada kapasitas Premium</td>
+        </tr>
+        <tr>
+            <td><b>DirectQuery</b></td>
+            <td>Tidak berlaku</td>
+            <td>Ya, untuk himpunan data yang terhubung</td>
+            <td>Jika diaktifkan pada kapasitas Premium</td>
+        </tr>
+        <tr>
+            <td><b>LiveConnect</b></td>
+            <td>Tidak berlaku</td>
+            <td>Ya, untuk himpunan data yang terhubung</td>
+            <td>Jika diaktifkan pada kapasitas Premium</td>
+        </tr>
+        <tr>
+            <td><b>Push (Azure Stream Analytics)</b></td>
+            <td>Tidak berlaku</td>
+            <td>Tidak berlaku</td>
+            <td>Tidak praktis (rumit)</td>
+        </tr>
+     </table>
+
+    <!-- Point 5 -->
+    <h1 id="mempromosikan-datasets-pada-power-bi-service">Mempromosikan Datasets pada Power BI Service</h1>
+    <p>
+        Proses business intelligence melibatkan kolaborasi. Berbagi dataset merupakan cara untuk berkolaborasi dalam organisasi. 
+        Untuk memastikan bahwa organisasi memiliki data yang konsisten untuk membuat keputusan, penting untuk membuat dan berbagi himpunan data yang dioptimalkan lalu mendukung dataset tersebut sebagai salah satu sumber fakta. 
+        Power BI menyediakan dua cara untuk mendukung berbagi dataset:
+    </p>
+    <ol type="1">
+        <li><b>Promosi</b>: Pengguna dapat mempromosikan dataset yang siap untuk penggunaan luas.</li>
+        <li><b>Sertifikasi</b>: Pengguna dapat meminta sertifikasi untuk dataset yang dipromosikan. Sertifikasi menjadi proses yang sangat selektif, sehingga hanya dataset yang benar-benar andal dan otoritatif yang digunakan pada organisasi.</li>
+    </ol>
+
+    <!-- Point 6 -->
+     <h1 id="membangun-workspace-power-bi-service">Membangun Workspace Power BI Service</h1>
+     <p>
+        Sebelum mengelola dataset pada Power BI Service, diperlukan file Power BI dengan ekstensi <b>.pbix</b>. 
+        Unduh <a href="https://drive.google.com/file/d/1hYoToh0iI5Kd0XWgkvrycpUreLkM9KZL/preview" target="_blank">file IT Spend</a> yang berisi tentang report dan dataset mengenai informasi tentang budget, pengeluaran & perkiraan (forecast) perusahaan pada teknologi dengan ilustrasi dataset seperti di bawah ini.
+     </p>
+
+     <iframe src="https://drive.google.com/file/d/1gSgGXfLGhDjiJHVP6taF2v1-nv0cmkRs/preview" width="100%" height="300px" frame-border="0" alt="Data IT Spend"></iframe>
+
+     <p>
+        Untuk mengelola dataset pada Power BI Service diperlukan workspace dengan data yang diunduh sebelumnya. Berikut adalah langkah yang dapat digunakan untuk membangun workspace:
+     </p>
+
+     <ol type="1">
+        <li>
+            Buka Power BI Service pada link <a href="http://app.powerbi.com" target="_blank">app.powerbi.com</a>.
+        </li>
+        <li>
+            Pada panel bar yang terletak pada sisi kiri pilih ikon 
+            <iframe src="https://drive.google.com/file/d/1Md2PWmWa_NWzCMR-kj_D_IYc3UQwa4F1/preview" width="20px" height="20px" style="vertical-align: middle;" frame-border="0" alt="Icon Correlation"></iframe>
+        </li>
+        <li>
+            Pada panel yang terbuka pilih “New workspace” untuk memilih membuat workspace baru seperti ilustrasi di bawah.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1Oe2fmFXYA2ekj3_9viZqTedWGmtmJJh7/preview" width="100%" height="300px" frame-border="0" alt="New Workspace"></iframe>
+        <li>
+            Pada panel “Create a workspace” yang terbuka ketikkan nama workspace yang diinginkan pada “Name”, pastikan tidak sama dengan nama workspace yang sudah ada.
+        </li>
+        <li>
+            Ketikkan deskripsi untuk workspace yang akan dibangun pada “Description”.
+        </li>
+        <li>
+            Pilih Apply seperti pada ilustrasi di bawah.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1fKq6wgXlBy2pzVH9xuaULtb03tKN7Ict/preview" width="100%" height="300px" frame-border="0" alt="Apply Workspace"></iframe>
+        <li>
+            Halaman Power BI Service akan berganti pada workspace baru.
+        </li>
+        <li>
+            Pilih menu “Upload” lalu pilih “Browse” seperti pada ilustrasi di bawah.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1mNRw9sWGZn_eIQOMRJDMpv3junsY-s_e/preview" width="100%" height="300px" frame-border="0" alt="Upload"></iframe>
+        <li>
+            Pilih file yang akan diupload pada workspace, lalu pilih “Open” seperti ilustrasi di bawah.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1ASL4NeiEk174jr1LnA_3S5Maos7ScYKw/preview" width="100%" height="300px" frame-border="0" alt="Open File"></iframe>
+        <li>
+            Workspace yang dibangun sebelumnya akan berisi 3 file setelah proses upload selesai yaitu file untuk Dashboard, Dataset, dan Report seperti ilustrasi di bawah.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1zWoiOfl3cH_cc8M8OBqjBz5QwHw7BNFU/preview" width="100%" height="300px" frame-border="0" alt="Manage Datasets"></iframe>
+     </ol>
+
+     <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan membangun workspace pada Power BI Service.
+     </p>
+     <iframe src="https://drive.google.com/file/d/1fawgV3VKxjdjL5AuUSVlZ_kYzGyAm-uY/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

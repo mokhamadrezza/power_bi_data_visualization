@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merancang Data Model dalam Power BI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="Judul">Merancang Data Model dalam Power BI</h1>
+        </div>
+<style>
+    
+body{
+    background-color: #fff;
+}
+
+.container{
+    background-color: #fff;
+    padding-top: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 3%;
+}
+
+.container .header{
+    color: black;
+}
+
+.Judul{
+    font-size: 2.6vw;
+    text-align: left;
+    font-weight: bolder;
+    margin: 1%;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.content-box{
+    max-width: 90vw;
+    min-width: 30%;
+    border: 0.1vw solid #4471C4;
+    background-color: #fff;
+    box-shadow: 0.4vw 0.4vw 1.5vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.2vw;
+    margin: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    text-align: justify;
+}
+
+.content-box h2{
+    font-size: x-large;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: inline-flex;
+    align-content: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    max-width: 90vw;
+}
+
+.content-box ul{
+    list-style-type: disc;
+    padding-left: 2.5%;
+    margin-left: 1%;
+    font-size: 16px;
+    line-height: 2.5;
+    max-width: 90vw;
+}
+
+.content-box ul li{
+    max-width: 90vw;
+}
+
+.top-box{
+    margin-bottom: 0.5%;
+    max-width: 90vw;
+}
+
+.no-bullets{
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 90vw;
+}
+
+.no-bullets ul{
+    padding-left: 3%; /* Menambahkan indentasi untuk daftar bersarang */
+    max-width: 90vw;
+}
+
+.note-box{
+    display: flex;
+    max-width: 90vw;
+    height: auto;
+    padding: 1%;
+    border-radius: 1vw;
+    border: 0.1vw solid #000;
+    background-color: #CFE1F3; /* Warna latar belakang seperti catatan */
+    box-shadow: 0.3vw 0.3vw 1vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    position: relative;
+}
+
+.note-box span {
+    margin-top: 0%;
+    font-size: 1.6vw;
+    font-family: calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+    font-weight: bolder;
+}
+
+.note-box h2{
+    margin-top: 0;
+    max-width: fit-content;
+    font-size: 30px;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+
+.note-box p{
+    margin: 0;
+    max-width: 90vw;
+    font-size: 1.4vw;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+/* Style for h1 */
+h1{
+    font-size: 1.6vw; /* Ukuran font 20 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    color: #1f2855;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for h2 */
+h2{
+    font-size: 1.8vw; /* Ukuran font 18 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/*Style for h3 */
+h3 {
+    font-size: 1.6vw;
+    font-weight: bolder;
+    font-family: calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /*Jarak spasi 1/5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for p */
+p{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+/* Style for ul and ol */
+ul, ol{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for li */
+li{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+
+.small-text{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.large-text {
+    line-height: 1.5; /* Jarak Spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    vertical-align: top;
+}
+
+.Tools{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.Tipe{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 0%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.pic {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    height: auto;
+}
+
+iframe{
+    max-width: 75%;
+    min-height: auto;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 0.1vw solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-size: 1.2vw;
+}
+th {
+    background-color: #2796a3; /* Warna Latar Belakang untuk Baris Pertama */
+    color: white;
+    text-align: center;
+    font-size: 1.2vw;
+}
+tr:hover {
+    background-color: beige;
+}
+
+font {
+    max-width: 100%;
+}
+
+.kotak {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 1.5vw;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #2796a3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<div class="content-box"> <!-- Berisi Poin-poin Konten-->
+    <h2>
+        <img src="https://drive.google.com/thumbnail?id=1OSwy6Vn5jv8ERj5uV-d5abA8LFGNXV9x" alt="Content Image" style="vertical-align: middle; margin-right: 10px; max-width: 40px; max-height: 40px; padding-top: 10px;">Content
+    </h2>
+    <ul class="no-bullets" style="color: blue;">
+        <li><a href="#definisi-data-modeling" target="_blank" style="color: blue;">Definisi Data Modeling</a></li>
+        <li><a href="#peran-data-modeling-dalam-analisis-data" target="_blank" style="color: blue;">Peran Data Modeling dalam Analisis Data</a></li>
+        <li><a href="#komponen-data-modeling" target="_blank" style="color: blue;">Komponen Data Modeling</a></li>
+        <li><a href="#kardinalitas-dalam-data-modeling" target="_blank" style="color: blue;">Kardinalitas dalam Data Modeling</a></li>
+        <li><a href="#cross-filter-direction-dalam-power-bi" target="_blank" style="color: blue;">Cross-Filter Direction dalam Power BI</a></li>
+        <li><a href="#jenis-skema-model-data" target="_blank" style="color: blue;">Jenis Skema Model Data</a></li>
+        <li><a href="#karakteristik-skema-model-data" target="_blank" style="color: blue;">Karakteristik Skema Model Data</a></li>
+        <li><a href="#kelebihan-dan-kekurangan-star-schema" target="_blank" style="color: blue;">Kelebihan dan Kekurangan Star Schema</a></li>
+        <li><a href="#implementasi-star-schema-pada-power-bi" target="_blank" style="color: blue;">Implementasi Star Schema pada Power BI</a></li>  
+    </ul>
+    
+</div>
+
+<div class="content-box">
+    <!--Point 1-->
+    <h1 id="#definisi-data-modeling">Definisi Data Modeling</h1>
+    <p>
+        Data modeling atau pemodelan data adalah proses menentukan struktur data, properti, dan hubungan dalam sebuah model data. Sebuah model data dalam Power BI adalah representasi logis tentang bagaimana data diorganisir dan saling terkait dalam alat ini. 
+        Ini merupakan kumpulan tabel dan hubungan antara mereka yang digunakan untuk membuat laporan dan visualisasi.
+    </p>
+    <iframe src="https://drive.google.com/file/d/1pRzoh04lxx9zJ5LZoCAI_IO84Bu4SxVf/preview" width="100%" height="300px" frame-border="0" alt="Data Modeling"></iframe>
+
+    <p>
+        Sebuah model data biasanya terdiri dari satu atau lebih sumber data, yang dapat berupa apa saja mulai dari lembar Excel hingga basis data berbasis cloud, dan satu atau lebih tabel yang mewakili data dalam sumber-sumber tersebut.
+    </p>
+    
+    <!--Point 2-->
+    <h1 id="peran-data-modeling-dalam-analisis-data">Peran Data Modeling dalam Analisis Data</h1>
+    <p>
+        Data modeling dalam analisis data memegang beberapa peranan penting. Berikut adalah beberapa peran data modeling:
+    </p>
+
+    <ol type="1">
+        <li>
+            Mendukung data eksplorasi 
+        </li>
+        <p>
+            Pemodelan data memungkinkan pengguna untuk membuat hirarki dan drill-down dalam data, yang mendukung eksplorasi data yang efisien. 
+            Pengguna dapat dengan cepat mengeksplorasi data untuk menemukan insight dan mengidentifikasi tren dari data.
+        </p>
+
+        <li>
+            Berpengaruh terhadap kinerja
+        </li>
+        <p>
+            Bagaimana sebuah model data didesain secara langsung mempengaruhi kecepatan dan efisiensi dalam pengambilan data. 
+            Model data yang didesain dengan buruk, seperti yang memiliki hubungan yang kompleks dan redundansi data, dapat mengakibatkan kinerja kueri yang lambat, yang dapat menyebabkan keterlambatan dalam proses pembuatan visualisasi data bahkan laporan (reports).
+        </p>
+
+        <li>
+            Mendorong laporan yang lebih akurat
+        </li>
+        <p>
+            Model data didesain dengan benar, dapat menjamin akurasi, konsistensi, dan keandalan data yang digunakan dalam laporan. 
+            Sehingga dapat menghasilkan wawasan yang lebih tepat dan meningkatkan pengambilan keputusan.
+        </p>
+
+        <li>
+            Memudahkan dalam pemeliharaan di masa depan
+        </li>
+        <p>
+            Model data yang dirancang dengan baik memastikan bahwa laporan bersifat scalable, yang dapat mengurangi upaya yang diperlukan untuk memelihara laporan ketika bisnis berkembang dan berubah. 
+            Membuat komponen yang dapat digunakan ulang, meningkatkan dokumentasi, dan standarisasi data juga dapat memastikan bahwa laporan mudah untuk dipelihara dan diperbarui seiring berjalannya waktu.
+        </p>
+        
+    </ol>
+
+    <!--Point 3-->
+    <h1 id="komponen-data-modeling">Komponen Data Modeling</h1>
+    <p>
+        Dalam data modeling terdapat beberapa komponen yang perlu diperhatikan untuk membangunnya.
+    </p>
+    <iframe src="https://drive.google.com/file/d/1JRKKaOVDKjEvPSB33jZ0ukuuWPRDkCuF/preview" width="100%" height="300px" frame-border="0" alt="Data Modeling"></iframe>
+
+    <p>
+        Beberapa komponen data modeling adalah sebagai berikut:
+    </p>
+    
+    <ol type="1">
+        <li>
+            Tabel Fakta (Fact Table)
+        </li>
+        <p>
+            Tabel fakta berisi metrik proses sebuah bisnis. Data yang dimuat dalam tabel ini harus bersifat numerik (dalam bentuk angka) dan bisa ditambah. 
+            Fakta harus memuat hal-hal utama yang terkait dengan tabel-tabel di sekitarnya, yaitu tabel dimensi.
+        </p>
+        <li>
+            Tabel Dimensi (Dimension Table)
+        </li>
+        <p>
+            Tabel dimensi memuat informasi kualitatif. Dalam sebuah model data, terdapat beberapa tabel dimensi sekaligus yang mengelilingi tabel fakta. 
+            Namun, harus dipastikan bahwa semua informasinya terkait dengan apa yang dicantumkan dalam tabel fakta.
+        </p>
+        <li>
+            Primary Key
+        </li>
+        <p>
+            Primary key adalah suatu atribut (bisa satu atau lebih) yang digunakan untuk mendefinisikan atau memastikan bahwa setiap record di dalam tabel tersebut bersifat unique atau berbeda antara yang satu dengan yang lainnya. 
+            Syarat nilai pada atribut yang dijadikan primary key, yaitu:
+            <ol type="a">
+                <li>Bersifat unik atau berbeda dengan nilai atribut pada record lainnya.</li>
+                <li>Nilai atribut tidak boleh Null (kosong, tidak diketahui, tidak dapat ditentukan).</li>
+                <li>Nilai Key tersebut lebih natural untuk dijadikan acuan.</li>
+            </ol>
+        </p>     
+        <li>
+            Foreign Key
+        </li>        
+        <p>
+            Foreign key adalah suatu atribut (bisa satu atau lebih) yang digunakan sebagai penghubung antara tabel satu dengan tabel yang lainnya pada database relational. 
+            Tujuan dari foreign key adalah untuk menjaga integritas data dan memungkinkan navigasi antara dua contoh entitas yang berbeda.
+        </p>
+        <li>
+            Candidate Key
+        </li>
+        <p>
+            Candidate Key merupakan sekumpulan atribut yang secara unik mengidentifikasi tupel dalam sebuah tabel. Candidate key adalah super key tanpa atribut berulang. 
+            Jika melihat pada super key ada beberapa gabungan field yang bisa dijadikan key, maka pada candidate key ini dilihat gabungan/himpunan yang paling sedikit, jika ada gabungan 3 field, gabungan 2 field, dan 1 field saja maka yang pantas menjadi candidate key adalah yang 1 field saja.
+        </p>
+    
+    <!-- Point 4 -->
+    <h1 id="kardinalitas-dalam-data-modeling">Kardinalitas dalam Data Modeling</h1>
+    <p>
+       Tabel fakta dan dimensi terhubung melalui kunci utama dan kunci alternatif, tetapi pengguna harus mendefinisikan hubungan tersebut lebih lanjut. Setiap hubungan dalam sebuah model didefinisikan oleh tipe kardinalitas. 
+       Ada tiga jenis hubungan kardinalitas dalam pemodelan data Power BI:
+    </p>
+    <ol type="1">
+       <li>
+           One-to-One (1:1)
+       </li>
+       <p>
+           Terjadi ketika satu records dalam tabel pertama terhubung dengan satu dan hanya satu records dalam tabel kedua. 
+           Jenis hubungan ini relatif jarang dalam pemodelan data Power BI.
+       </p>
+       <iframe src="https://drive.google.com/file/d/12rdLCiJj95SQ_swP4eGza_B1qjX-vhc2/preview" width="100%" height="300px" frame-border="0" alt="One to One"></iframe>
+
+       <li>
+        One-to-Many (1: *)
+       </li>
+       <p>
+        Terjadi ketika satu records dalam tabel pertama dapat terkait dengan banyak records dalam tabel kedua, dan ini adalah jenis hubungan yang paling umum dalam pemodelan data Power BI. 
+        Jenis kardinalitas ini digunakan untuk menghubungkan tabel fakta dengan satu atau lebih tabel dimensi, di mana tabel dimensi biasanya berada di sisi "satu" dari hubungan, dan tabel fakta umumnya berada di sisi "banyak".
+       </p>
+       <iframe src="https://drive.google.com/file/d/1RrILec3bYi6cYaorSZLVYQ_F-wIUpQN7/preview" width="100%" height="300px" frame-border="0" alt="One to Many"></iframe>
+
+       <li>
+        Many-to-Many (*: *)
+       </li>
+       <p>
+        Terjadi ketika banyak catatan dalam tabel pertama dapat terkait dengan banyak catatan dalam tabel kedua. Jenis hubungan ini tidak didukung secara langsung dalam pemodelan data Power BI dan jarang digunakan.
+       </p>
+       <iframe src="https://drive.google.com/file/d/1rUz-HFJTQzqOwbDSQMddNGSjKaiY8Uy2/preview" width="100%" height="300px" frame-border="0" alt="Many to Many"></iframe>
+    </ol>
+
+    <p>
+        Memahami kardinalitas antara tabel-tabel sangat penting dalam pemodelan data Power BI, karena memengaruhi bagaimana data diagregasi, difilter, dan divisualisasikan dalam laporan. 
+        Dengan mendefinisikan kardinalitas dengan benar dalam hubungan, pengguna dapat membuat laporan yang akurat dan bermakna yang memberikan wawasan tentang data.
+    </p>
+
+    <!-- Point 5 -->
+     <h1 id="cross-filter-direction-dalam-power-bi">Cross-Filter Direction dalam Power BI</h1>
+     <p>
+        Setiap relasi dalam sebuah model juga didefinisikan dengan arah penyaringan silang (cross-filter direction), yang menentukan arah di mana penyaringan akan disebarkan. 
+        Dalam Power BI terdapat dua cross-filter direction yaitu:
+     </p>
+     <ol type="1">
+        <li>
+            Tunggal (Single)
+        </li>
+        <p>
+            Ketika cross-filter direction tunggal diterapkan, hanya salah satu dari tabel dalam hubungan yang dapat menyaring data ke tabel lainnya. 
+            Maka filtering data dalam satu tabel memengaruhi data yang ditampilkan dalam tabel lainnya, tetapi filtering dalam tabel lainnya tidak mempengaruhi data yang ditampilkan dalam tabel pertama.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1bEKcqpxn5dUJGhrgGD_33rOx1-MvNswO/preview" width="100%" height="300px" frame-border="0" alt="Single Filtering"></iframe>
+
+        <li>
+            Dua arah (Bi-directional)
+        </li>
+        <p>
+            Ketika penyaringan silang dua arah diterapkan, data dapat disaring dalam kedua arah sepanjang hubungan antara tabel-tabel tersebut. Sehingga filtering data dalam satu tabel memengaruhi data yang ditampilkan dalam tabel lainnya, dan sebaliknya. 
+            Jenis ini kurang umum dan dapat mempengaruhi kinerja dan menciptakan jalur filtering yang ambigu.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1a9YEPJbjxlL39z5wm_TOzPETG5zCPg7H/preview" width="100%" height="300px" frame-border="0" alt="Bidirectional Filtering"></iframe>
+     </ol>
+
+     <!-- Point 6 -->
+      <h1 id="jenis-skema-model-data">Jenis Skema Model Data</h1>
+      <p>
+        Dalam data modeling pada penyimpan atau database terdapat beberapa skema model data yang digunakan untuk mengoptimalkan ruang penyimpanan dan proses analisis data. 
+        Beberapa model data yang cukup populer adalah sebagai berikut:
+      </p>
+      <ol type="1">
+        <li>
+            Star Schema (Skema Bintang)
+        </li>
+        <p>
+            Skema bintang merupakan skema paling sederhana dengan satu tabel tengah yaitu tabel fakta (fact table), di mana tabel tersebut terhubung dengan beberapa tabel dimensi lainnya.
+        </p>
+        <iframe src="https://drive.google.com/file/d/13XUAJDkYKtW8ChAstLpVfNoQ-tmr3-An/preview" width="100%" height="300px" frame-border="0" alt="Star Schema"></iframe>
+
+        <li>
+            Snowflake Schema
+        </li>
+        <p>
+            Skema snowflake mengandung tabel fakta, tabel dimensi, dan satu atau lebih tabel untuk setiap tabel dimensi. 
+            Skema snowflake adalah bentuk yang ternormalisasi dari skema bintang yang mengurangi redudansi dan menghemat penyimpanan yang signifikan.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1vmSJaY57jzL8SXhojJ3bWs2Wz5u4wJ3P/preview" width="100%" height="300px" frame-border="0" alt="Snowflake Schema"></iframe>
+
+        <li>
+            Galaxy Schema
+        </li>
+        <p>
+            Galaxy Schema atau Fact Constellation Schema memiliki seluruh tabel dimensi yang terhubung langsung ke lebih dari satu tabel fakta pusat. Fact Constellation Schema terdiri dari beberapa tabel fakta yang saling berbagi tabel dimensi. 
+            Skema ini dapat dilihat sebagai perluasan dari skema bintang (star schema). Fact Constellation Schema memiliki beberapa tabel fakta dan beberapa tabel dimensi yang umum.
+        </p>
+        <iframe src="https://drive.google.com/file/d/11jPZLudc3xRMW5cP4wrBQWIUjNxB4e-s/preview" width="100%" height="300px" frame-border="0" alt="Galaxy Schema"></iframe>
+      </ol>
+
+    <!-- Point 7 -->
+    <h1 id="karakteristik-skema-model-data">Karakteristik Skema Model Data</h1>
+    <p>
+        Jenis model data seperti Star Schema, Snowflake Schema, dan Galaxy Schema memiliki beberapa karakteristik yang berbeda, diantaranya yaitu:
+    </p>
+    <table>
+        <tr>
+            <th>Star Schema</th>
+            <th>Snowflake Schema</th>
+            <th>Galaxy Schema</th>
+        </tr>
+        <tr>
+            <td>Setiap dimensi dalam Skema Star hanya digambarkan dengan satu tabel dimensi</td>
+            <td>Lebih mudah untuk menambahkan dimensi ke dalam skema</td>
+            <td>Dimensi pada skema ini dipisahkan menjadi beberapa dimensi lainnya berdasarkan hierarki yang dimiliki. Contoh : suatu tabel geografi memiliki hirarki region, country, state, dan city, maka dalam Skema Galaxy harus dipisah menjadi empat dimensi</td>
+        </tr>
+        <tr>
+            <td>
+                Tabel dimensi harus:
+                <p>
+                    <ol type="1">
+                        <li style="text-align: left;">Memiliki sebuah set atribut</li>
+                        <li style="text-align: left;">Melakukan “join” pada tabel fakta menggunakan Foreign Key</li>
+                        <li style="text-align: left;">TIDAK terhubung satu sama lain</li>
+                        <li style="text-align: left;">Mengandung key dan measure</li>
+                    </ol>
+                </p>
+            </td> 
+            <td>Kinerja query berkurang akibat dari banyaknya tabel yang ada sehingga membutuhkan upaya maintenance yang lebih besar karena pencarian tabel lebih banyak</td>
+            <td>Skema ini membantu melakukan agregasi tabel fakta agar lebih mudah untuk dipahami</td>
+        </tr>
+    </table>
+
+    <!-- Point 8 -->
+     <h1 id="kelebihan-dan-kekurangan-star-schema">Kelebihan dan Kekurangan Star Schema</h1>
+     <p>
+        Star Schema merupakan model data yang paling sederhana dan dasar, sehingga mudah untuk dipelajari bagi siapapun. Star Schema memiliki satu tabel fakta tunggal di pusat, yang berisi "fakta" bisnis (seperti jumlah transaksi dan kuantitas). 
+        Tabel fakta terhubung ke beberapa tabel dimensi lainnya sepanjang "dimensi" seperti waktu, atau produk.
+     </p>
+     <iframe src="https://drive.google.com/file/d/1VGJxnb2XMn4CAWPngtC1udivHsZoR3E2/preview" width="100%" height="300px" frame-border="0" alt="Star Schema"></iframe>
+
+     <p>
+        Skema bintang memungkinkan pengguna untuk memotong dan memotong data sesuai keinginan mereka. Beberapa keunggulan menggunakan skema bintang meliputi:
+     </p>
+     <ol type="1">
+        <li>Kemudahan kueri: Skema bintang adalah model yang memiliki sedikit jumlah tabel dan jalur penggabungan yang jelas, sehingga membuat kueri lebih sederhana.</li>
+        <li>Peningkatan kinerja: Skema bintang adalah denormalisasi, yang berarti aturan tipikal normalisasi yang diterapkan pada basis data relasional transaksional dilepaskan selama desain skema bintang, menghasilkan kinerja kueri yang lebih cepat.</li>
+        <li>Mudah dipahami: Skema bintang mudah dipahami dan diinterpretasikan, bahkan oleh pengguna non-teknis.</li>
+        <li>Mendukung sistem OLAP dan data cube: Skema bintang mudah diintegrasikan dengan sistem OLAP dan data cube.</li>
+     </ol>
+
+     <p>
+        Disisi lain skema bintang memiliki beberapa kekurangan, diantaranya yaitu:
+     </p>
+     <ol type="1">
+        <li>Data yang redundant: Skema bintang dapat memiliki data yang redundan, yang mengakibatkan penyimpanan yang lebih besar di disk.</li>
+        <li>Masalah integritas: Skema bintang dapat memiliki masalah integritas akibat aturan normalisasi yang diterapkan secara longgar selama desain.</li>
+        <li>Tidak fleksibel untuk kebutuhan analitis: Skema bintang tidak fleksibel dalam hal kebutuhan analitis seperti model data yang ternormalisasi.</li>
+     </ol>
+
+     <!-- Point 9 -->
+      <h1 id="implementasi-star-schema-pada-power-bi">Implementasi Star Schema pada Power BI</h1>
+      <p>
+        Skema bintang adalah alat yang berguna untuk mengorganisasi data dengan cara yang mudah dipahami dan dianalisis, terutama untuk kumpulan data besar. 
+        Sebelum mengimplementasikan skema bintang pada Power BI unduh data source <a href="https://docs.google.com/spreadsheets/d/1vn7JJICdYjw_p9MGZ5G7pO_jTQYvyN6e/edit?usp=drive_link" target="_blank" style="color: blue;">Shop Records</a> yang akan digunakan di course ini. 
+        Dataset tersebut merupakan dataset yang memuat informasi mengenai penjualan dan produk dari suatu toko.
+      </p>
+      <iframe src="https://drive.google.com/file/d/1lrcWi8x7I9zzMvDei1GyQcT8wpdK2L_E/preview" width="100%" height="300px" frame-border="0" alt="Star Schema"></iframe>
+
+      <p>
+        Untuk mengimplementasikan skema bintang dataset yang telah diunduh sebelumnya ke dalam Power BI dapat menggunakan langkah langkah seperti berikut:
+      </p>
+      <ol type="1">
+        <li>Pada tabel Country, terdapat header tabel yang tidak sesuai. Untuk mengatur header tabel agar sesuai, pada panel <b>“Home”</b> pilih <b>“Transform Data”</b> seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1W0MSrw4s2UxDLHiRirLqto5GkvWDruVC/preview" width="100%" height="300px" frame-border="0" alt="Transform Data"></iframe>
+
+        <li>Pada window Power Query yang terbuka, pilih tabel Country lalu pada panel <b>“Home”</b> pilih <b>“Use First Row as Header”</b> sehingga row pertama akan menjadi header seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1YliqjfWkft4lxgei-bN3Iv2gAES4mPDx/preview" width="100%" height="300px" frame-border="0" alt="First Row Header"></iframe>
+
+        <li>Pilih <b>“Close & Apply”</b> pada panel <b>“Home”</b> untuk menerapkan perubahan yang terjadi seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/11iGfJvZHu6MEVjohVwyg8j6XUrEi2Mf0/preview" width="100%" height="300px" frame-border="0" alt="Close & Apply"></iframe>
+
+        <li>Setelah header dan format data sesuai, pada tab kiri pilih <b>“Model View”</b> seperti pada ilustrasi di bawah. Maka Power BI akan secara otomatis membuat relasi dan kardinalitasnya.</li>
+        <li>Untuk mengubah kardinalitas dan relasi dari model data yang telah terbentuk, pilih <b>“Manage Relationships”</b> pada panel <b>“Home”</b> seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1mdRsWsrETB13ebWdc4-9VniHWtZDh-_3/preview" width="100%" height="300px" frame-border="0" alt="Manage Relationships"></iframe>
+
+        <li>
+            Untuk membuat star schema dari model data yang telah terbentuk, pada window “Manage relationships” un-checklist pada relasi antara <b>Revenue → Country</b>, dan <b>Revenue_Country → Country</b>, kemudian pilih <b>“Delete”</b> untuk menghapus relasi antara tabel seperti ilustrasi di bawah.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1tKHxn-A4nODGrSVhv5Mq5FW3QxonKDTi/preview" width="100%" height="300px" frame-border="0" alt="Revenue Country"></iframe>
+
+        <li>Akan muncul window “Delete relationship” seperti ilustrasi di bawah, pilih <b>“Delete”</b> untuk mengonfirmasi akan menghapus relasi antara tabel. Lalu pilih close pada window “Manage relationship” setelah penghapusan relasi.</li>
+        <iframe src="https://drive.google.com/file/d/1-oUzk2vYxFI53rq2lq3zX14glEkoTS3Q/preview" width="100%" height="300px" frame-border="0" alt="Delete Relationship"></iframe>
+
+        <li>Setelah proses penghapusan selesai, terlihat relasi antara tabel Revenue → Country, dan Revenue_Country → Country telah hilang.</li>
+        <li>Tambahkan relasi antara tabel <b>Sales → Revenue_Country</b> dengan memilih kembali <b>“Manage Relationships”</b> pada panel <b>“Home”</b>.</li>
+        <iframe src="https://drive.google.com/file/d/1Mebl0SHMmMYcT3L6ApPoYemDEPE9fo6p/preview" width="100%" height="300px" frame-border="0" alt="Manage Relationships"></iframe>
+
+        <li>Pada window “Manage relationships” pilih <b>New</b> untuk membuat relasi baru.</li>
+        <iframe src="https://drive.google.com/file/d/1rkYfw2nm_TmPRBUBR_XvLmvFjnHWgmex/preview" width="100%" height="300px" frame-border="0" alt="New Relationships"></iframe>
+
+        <li>Pada window “Create relationship” pilih tabel <b>“Sales”</b> dan <b>“Revenue_Country”</b>, lalu pilih <b>“Country_Code”</b> pada masing masing tabel untuk memilih tabel dan kolom yang akan digunakan pada relasi.</li>
+        <li>Kemudian pilih <b>“Many to many (*.*)”</b> pada <b>“Cardinality”</b> dan <b>“Single (Sales filters Revenue_Country)”</b> pada <b>“Cross filters direction”</b> untuk memilih jenis kardinalitas dan Cross-filters-direction.</li>
+        <iframe src="https://drive.google.com/file/d/1Xo-puaEgUNl5v8kb-Zjx-4Tr-YM-HoYk/preview" width="100%" height="300px" frame-border="0" alt="Select Tables and Columns"></iframe>
+
+        <li>Checklist “Make this relationship active” untuk mengaktifkan relasi dan klik Save.</li>
+        <li>Terlihat relasi baru pada window “Manage relationship” seperti ilustrasi di bawah, lalu pilih “Close” untuk menutup window.</li>
+        <iframe src="https://drive.google.com/file/d/11-woQXKzcGlAcYe3oF3AXLoxeslOVM1G/preview" width="100%" height="300px" frame-border="0" alt="New Relation"></iframe>
+
+        <li>Ilustrasi data model yang terbentuk dapat terlihat seperti di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1cwQ-5fs1K6juSErGPxas-Ajdb6-FTqUt/preview" width="100%" height="300px" frame-border="0" alt="Data Model"></iframe>
+      </ol>
+
+      <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan implementasi star schema pada Power BI.
+      </p>
+      <iframe src="https://drive.google.com/file/d/1KKNTULfeil-a7uiAkCle0MjQD0SE-Um-/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+</div>

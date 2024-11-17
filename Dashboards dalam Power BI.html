@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboards dalam Power BI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="Judul">Dashboards dalam Power BI</h1>
+        </div>
+<style>
+    
+body{
+    background-color: #fff;
+}
+
+.container{
+    background-color: #fff;
+    padding-top: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 3%;
+}
+
+.container .header{
+    color: black;
+}
+
+.Judul{
+    font-size: 2.6vw;
+    text-align: left;
+    font-weight: bolder;
+    margin: 1%;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.content-box{
+    max-width: 90vw;
+    min-width: 30%;
+    border: 0.1vw solid #4471C4;
+    background-color: #fff;
+    box-shadow: 0.4vw 0.4vw 1.5vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.2vw;
+    margin: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    text-align: justify;
+}
+
+.content-box h2{
+    font-size: x-large;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: inline-flex;
+    align-content: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    max-width: 90vw;
+}
+
+.content-box ul{
+    list-style-type: disc;
+    padding-left: 2.5%;
+    margin-left: 1%;
+    font-size: 16px;
+    line-height: 2.5;
+    max-width: 90vw;
+}
+
+.content-box ul li{
+    max-width: 90vw;
+}
+
+.top-box{
+    margin-bottom: 0.5%;
+    max-width: 90vw;
+}
+
+.no-bullets{
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 90vw;
+}
+
+.no-bullets ul{
+    padding-left: 3%; /* Menambahkan indentasi untuk daftar bersarang */
+    max-width: 90vw;
+}
+
+.note-box{
+    display: flex;
+    max-width: 90vw;
+    height: auto;
+    padding: 1%;
+    border-radius: 1vw;
+    border: 0.1vw solid #000;
+    background-color: #CFE1F3; /* Warna latar belakang seperti catatan */
+    box-shadow: 0.3vw 0.3vw 1vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    position: relative;
+}
+
+.note-box span {
+    margin-top: 0%;
+    font-size: 1.6vw;
+    font-family: calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+    font-weight: bolder;
+}
+
+.note-box h2{
+    margin-top: 0;
+    max-width: fit-content;
+    font-size: 30px;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+
+.note-box p{
+    margin: 0;
+    max-width: 90vw;
+    font-size: 1.4vw;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+/* Style for h1 */
+h1{
+    font-size: 1.6vw; /* Ukuran font 16 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    color: #1f2855;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for h2 */
+h2{
+    font-size: 1.4vw; /* Ukuran font 14 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/*Style for h3 */
+h3 {
+    font-size: 1.2vw; /* Ukuran font 12 */
+    font-weight: bolder;
+    font-family: calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /*Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for p */
+p{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+/* Style for ul and ol */
+ul, ol{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for li */
+li{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+
+.small-text{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.large-text {
+    line-height: 1.5; /* Jarak Spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    vertical-align: top;
+}
+
+.Tools{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.Tipe{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 0%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.pic {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    height: auto;
+}
+
+iframe{
+    max-width: 75%;
+    min-height: auto;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 0.1vw solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-size: 1.2vw;
+}
+th {
+    background-color: #2796a3; /* Warna Latar Belakang untuk Baris Pertama */
+    color: white;
+    text-align: center;
+    font-size: 1.2vw;
+}
+tr:hover {
+    background-color: beige;
+}
+
+font {
+    max-width: 100%;
+}
+
+.kotak {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 1.5vw;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #2796a3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<div class="content-box"> <!-- Berisi Poin-poin Konten-->
+    <h2>
+        <img src="https://drive.google.com/thumbnail?id=1OSwy6Vn5jv8ERj5uV-d5abA8LFGNXV9x" alt="Content Image" style="vertical-align: middle; margin-right: 10px; max-width: 40px; max-height: 40px; padding-top: 10px;">Content
+    </h2>
+    <ul class="no-bullets" style="color: blue;">
+        <li><a href="#kelebihan-power-bi-dibandingkan-tools-lain" target="_blank" style="color: blue;">Kelebihan Power BI dibandingkan Tools Lain</a></li>
+        <li><a href="#mengenal-dashboard-pada-power-bi" target="_blank" style="color: blue;">Mengenal Dashboard pada Power BI</a></li>
+        <li><a href="#perbedaan-dashboard-dan-reports pada Power BI" target="_blank" style="color: blue;">Perbedaan Dashboard dan Reports pada Power BI</a></li>
+        <li><a href="#hal-penting-dalam-membangun-dashboard-power-bi" target="_blank" style="color: blue;">Hal Penting dalam Membangun Dashboard Power BI</a></li>
+        <li><a href="#menyematkan-tiles-pada-dashboard-power-bi-service" target="_blank" style="color: blue;">Menyematkan Tiles pada Dashboard Power BI Service</a></li>
+        <li><a href="#mengonfigurasi-peringatan-data-pada-power-bi-service" target="_blank" style="color: blue;">Mengonfigurasi Peringatan Data pada Power BI Service</a></li>
+        <li><a href="#menggunakan-quick-insight-pada-report-power-bi-service" target="_blank" style="color: blue;">Menggunakan Quick Insight pada report Power BI Service</a></li>
+        <li><a href="#mengatur-tema-dashboard-pada-power-bi-service" target="_blank" style="color: blue;">Mengatur Tema Dashboard pada Power BI Service</a></li>
+        <li><a href="#menyematkan-satu-halaman-pada-dashboard" target="_blank" style="color: blue;">Menyematkan Satu Halaman pada Dashboard</a></li>
+        <li><a href="#tips-dashboard-efektif-dan-interaktif" target="_blank" style="color: blue;">Tips Dashboard Efektif dan Interaktif</a></li>    
+    </ul>
+     
+</div>
+
+<div class="content-box">
+    <!--Point 1-->
+    <h1 id="kelebihan-power-bi-dibandingkan-tools-lain">Kelebihan Power BI dibandingkan Tools Lain</h1>
+    <p>
+        Power BI adalah platform analisis data yang kuat dengan integrasi yang erat dengan ekosistem Microsoft, cocok untuk pengguna yang membutuhkan integrasi yang mulus dengan aplikasi Office. 
+        Berikut adalah perbandingan singkat antara Power BI dengan beberapa tools analisis data lainnya.
+    </p>
+    <table>
+        <tr>
+            <th><b>Aspek</b></th>
+            <th><b>Power BI</b></th>
+            <th><b>Tableau</b></th>
+            <th><b>QlikView</b></th>
+        </tr>
+        <tr>
+            <td><b>Integrasi dengan Ekosistem</b></td>
+            <td>Integrasi kuat dengan produk Microsoft (Excel, SharePoint, Azure, dll.)</td>
+            <td>Integrasi yang baik, tetapi fokusnya tidak sekuat Power BI</td>
+            <td>Integrasi yang baik, terutama dengan data warehouse</td>
+        </tr>
+        <tr>
+            <td><b>Kemudahan Penggunaan</b></td>
+            <td>Antarmuka yang intuitif, cocok untuk pengguna dari berbagai tingkat keahlia</td>
+            <td>User-friendly, namun mungkin memerlukan lebih banyak pelatihan</td>
+            <td>Memerlukan pelatihan lebih lanjut</td>
+        </tr>
+        <tr>
+            <td><b>Model Lisensi</b></td>
+            <td>Versi gratis (Power BI Desktop) yang powerful, biaya berbayar kompetitif</td>
+            <td>Lebih mahal, terutama untuk skala besar atau enterprise</td>
+            <td>Mahal, cocok untuk perusahaan besar</td>
+        </tr>
+        <tr>
+            <td><b>Kustomisasi Visualisasi</b></td>
+            <td>Berbagai macam visualisasi dapat disesuaikan, integrasi dengan custom visual</td>
+            <td>Sangat kuat dalam visualisasi, namun mungkin ada batasan dalam customisasi</td>
+            <td>Kuat, tetapi mungkin memerlukan pemrograman</td>
+        </tr>
+    </table>
+    
+    <!--Point 2-->
+    <h1 id="mengenal-dashboard-pada-power-bi">Mengenal Dashboard pada Power BI</h1>
+    <p>
+        Dashboard adalah visualisasi dari data yang dianggap penting yang dibutuhkan agar dapat memudahkan user dalam analisis kinerja serta memudahkan dalam proses pengambilan keputusan.
+    </p>
+    <iframe src="https://drive.google.com/file/d/1Bs6n1Y3wCKD_gDWjD1Xxjw8nx2_VBdC0/preview" width="100%" height="300px" frame-border="0" alt="Dashboard"></iframe>
+
+    <p>
+        Dashboard pada Power BI adalah satu halaman atau kanvas yang menggunakan visualisasi untuk menceritakan cerita dari data yang dimiliki pengguna. 
+        Dashboard dirancang untuk memberikan sorotan dari cerita tersebut dan terbatas pada satu halaman. Beberapa fitur dan langkah-langkah dalam menggunakan dashboard pada Power BI adalah sebagai berikut:
+    </p>
+    <ol type="1">
+        <li>
+            Pengguna dapat memilih visualisasi data yang ingin ditampilkan pada dashboard.
+        </li>
+        <li>
+            Pengguna dapat menyesuaikan tampilan visualisasi dengan menambahkan atau menghapus visualisasi, mengubah warna, dan menyesuaikan tata letak.
+        </li>
+        <li>
+            Pengguna dapat mengeksplorasi data dengan memilih setiap visualisasi dan melihat detailnya.
+        </li>
+
+    <!--Point 3-->
+    <h1 id="perbedaan-dashboard-dan-reports pada Power BI">Perbedaan Dashboard dan Reports pada Power BI</h1>
+    <p>
+        Pada Power BI, dashboard dan report adalah dua jenis visualisasi data yang berbeda. Berikut adalah perbedaan antara dashboard dan report:
+    </p>
+    <table>
+        <tr>
+            <th>Komponen</th>
+            <th>Dashboard</th>
+            <th>Report</th>
+        </tr>
+        <tr>
+            <td>Dataset</td>
+            <td>Dashboard dapat dibangun dari beberapa report dan dataset</td>
+            <td>Report hanya dibagun dari satu dataset</td>
+        </tr>
+        <tr>
+            <td>Ketersediaan fitur</td>
+            <td>Dashboard tidak terdapat filter, visualization, dan panel fields</td>
+            <td>Report memiliki filter, visualization, dan panel fields</td>
+        </tr>
+        <tr>
+            <td>Halaman</td>
+            <td>Dashboard dapat berisi hanya satu halaman</td>
+            <td>Report dapat berisi beberapa halaman</td>
+        </tr>
+        <tr>
+            <td>Aksesibilitas dataset</td>
+            <td>Pengguna dashboard tidak dapat mengakses dataset</td>
+            <td>Pengguna report dapat mengakses dataset melalui data Tab pada Power BI reports</td>
+        </tr>
+    </table>
+    
+    <!-- Point 4 -->
+     <h1 id="hal-penting-dalam-membangun-dashboard-power-bi">Hal Penting dalam Membangun Dashboard Power BI</h1>
+     <p>
+        Membangun sebuah dashboard Power BI yang efektif memerlukan perencanaan dan perhatian terhadap beberapa hal penting. 
+        Berikut adalah beberapa hal yang perlu dipertimbangkan dalam membangun dashboard Power BI:
+     </p>
+     <ol type="1">
+        <li>Mengatur tiles pada dashboard</li>
+        <p>Tiles adalah elemen individu dalam laporan (report) atau snapshot dari data yang disematkan pada sebuah dashboard. 
+            Ketika menyematkan elemen laporan dalam dashboard, akan terbentuk koneksi langsung antara laporan dan dashboard. 
+            Dalam satu dashboard dapat terdiri dari beberapa tiles berasal dari beberapa laporan.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1wbNaKOvegbkCWN4hJYcKIu9KY5tLujz8/preview" width="100%" height="300px" frame-border="0" alt="Dashboard Tiles"></iframe>
+        <p>
+            Fitur menyematkan tiles pada dashboard dari laporan tidak terdapat pada Power BI Desktop, melainkan hanya ada pada <a href="https://app.powerbi.com/" target="_blank" style="color: blue;">app.powerbi.com</a>, sehingga pengguna harus mem-publish laporannya menuju powerbi apps di website.
+        </p>
+
+        <li>Mengkonfigurasi peringatan data</li>
+        <p>
+            Pertumbuhan data yang semakin cepat mengakibatkan data yang tidak terkontrol sehingga terkadang menyulitkan bagi pengguna pada analisis dan pengambilan keputusan. Memasang peringatan data guna mencegah data yang tidak diinginkan pada laporan menjadi salah satu pilihan yang tepat.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1GbikyUocZkvBY0Nn2YHCzLEvK9Cu1sB-/preview" width="100%" height="300px" frame-border="0" alt="Manage Alerts"></iframe>
+        <p>
+            Peringatan data dapat digunakan untuk memberi peringatan atau notifikasi pada pengguna di mana data dalam kondisi spesifik seperti di bawah, di atas, dan diantara suatu batas. 
+            Fitur ini hanya tersedia pada Power BI Service (<a href="https://app.powerbi.com/" target="_blank" style="color: blue;">app.powerbi.com</a>) yang umumnya digunakan pada elemen laporan seperti Key Performance Indicator (KPI), grafik gauges, dan cards.
+        </p>
+
+        <li>Mengeksplorasi data dengan Asking Questions</li>
+        <p>
+            Power BI Dashboard mempunyai user-experience yang bersahabat. Ketika dashboard ter-publish, pemilik akan menerima email dari pengguna lain yang bertanya mengenai detail spesifik visualisasi pada Dashboard dengan adanya fitur Q&A. Fitur Q&A pada Power BI terdiri dari tiga elemen utama:
+        </p>
+        <ol type="a">
+            <li>Kotak Pertanyaan</li>
+            <p>
+                Pada elemen kotak pertanyaan pengguna mengetikkan pertanyaan. Beberapa pertanyaan akan dapat otomatis terjawab oleh sistem dan apabila tidak dapat terjawab oleh sistem akan mengirimkan email kepada pemilik dashboard.
+            </p>
+            <iframe src="https://drive.google.com/file/d/1HTpTZPOAv35mbcrI2EzDzSiIF2xEsIFR/preview" width="100%" height="300px" frame-border="0" alt="Question Box"></iframe>
+
+            <li>Pre-populated Suggestion Tiles</li>
+            <p>
+                Elemen ini bertujuan untuk memberikan jawaban pada audiens dashboard secara otomatis melalui visualisasi.
+            </p>
+            <iframe src="https://drive.google.com/file/d/1STJJzcEZtx-Q1yqcdNmqlPc8icos1MCk/preview" width="100%" height="300px" frame-border="0" alt="Suggestion Tiles"></iframe>
+
+            <li>Pin Visual Icon</li>
+            <p>
+                Elemen ini bertujuan untuk menyematkan visual yang terbentuk dari Pre-populated Suggestion Tiles.
+            </p>
+            <iframe src="https://drive.google.com/file/d/10qowL2Q7QxZuRvBX9I_ARNeNnqm8WQuC/preview" width="100%" height="300px" frame-border="0" alt="Pin Visual"></iframe>
+        </ol>
+
+        <li>Mereview Quick Insights</li>
+        <p>
+            Fitur Quick insight pada Power BI menggunakan algoritma machine learning pada keseluruhan dataset dan visual dalam report untuk memproduksi insight. 
+            Fitur ini memudahkan pengguna untuk menghasilkan visualisasi yang interaktif.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1EHjAaOb1uouTVOJ2ASL3ChuB5nvWYsHH/preview" width="100%" height="300px" frame-border="0" alt="Quick Insight"></iframe>
+        <p>
+            Untuk mengaktifkannya pengguna perlu memilih salah satu laporan pada Power BI Service lalu memilih ikon 
+            <iframe src="https://drive.google.com/file/d/1DGehVK-PbNfO3gZnsnboNvZqUVRfFj_K/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Vertical Triple Dot"></iframe>
+            dan memilih Quick Insight. Salah satu contoh Quick insight terdapat pada ilustrasi di bawah.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1TKRYbkxA4jvYAHNiHQapOri0yI5U-5KJ/preview" width="100%" height="300px" frame-border="0" alt="Quick Insight"></iframe>
+
+        <li>Menambahkan tema dashboard</li>
+        <p>
+            Dalam membangun dashboard, pengguna perlu memastikan tema yang sesuai kohesif dengan visualisasi.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1CGZl1SuDQdKVa5Z0jASyo-Zuiv2rRHs1/preview" width="100%" height="300px" frame-border="0" alt="Dashboard Theme"></iframe>
+        <p>
+            Power BI memberikan fitur untuk mengatur tema pada dashboard. Tema yang terdapat diantaranya yaitu:
+        </p>
+        <ol type="a">
+            <li>Light (Cerah)</li>
+            <li>Dark (Gelap)</li>
+            <li>Color-blind-friendly (ramah dengan buta warna)</li>
+            <li>Custom (kustom)</li>
+
+            <iframe src="https://drive.google.com/file/d/19kCfEdp1MTqoGfqUC5KCC2lr-piaZHzu/preview" width="100%" height="300px" frame-border="0" alt="Dashboard Theme"></iframe>
+        </ol>
+
+        <li>Menyematkan satu halaman pada dashboard</li>
+        <p>
+            Pada Power BI pengguna dapat menyematkan satu halaman report secara penuh seperti layaknya menyematkan satu tiles. Untuk menyematkan satu halaman penuh pada dashboard, pengguna dapat memilih ikon 
+            <iframe src="https://drive.google.com/file/d/1Ss5XfwXHb-UIPalzn6GoB-Ift9F7M1Z5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Horizontal Triple Dot"></iframe>, 
+            lalu pilih Pin to a dashboard pada report menggunakan Power BI Service.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1T8nWqFVJtPya8fbMehhmlXZ4VyPC6u89/preview" width="100%" height="300px" frame-border="0" alt="Pin Dashboard"></iframe>
+
+        <p>
+            Umumnya menyematkan satu halaman dilakukan apabila halaman tersebut merupakan ringkasan dari beberapa halaman lain dalam suatu report.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1608TdosNqEvT-pI3jLRhZnyvBrNAUH7m/preview" width="100%" height="300px" frame-border="0" alt="Report"></iframe>
+
+        <li>Mengkonfigurasi klasifikasi data</li>
+        <p>
+            Klasifikasi data merupakan fitur yang dapat diaktifkan dan dinonaktifkan sesuai dengan kebutuhan bisnis organisasi. Semua dashboard diatur secara default ke jenis klasifikasi tertentu.
+        </p>
+        <p>
+            Klasifikasi data membantu pemilik dashboard meningkatkan kesadaran keamanan kepada audiens dashboard sehingga pengguna mengetahui tingkat keamanan apa yang harus dipertimbangkan saat melihat atau berbagi dashboard.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1QuXUPfaE5tiEWes5r2_TDCeXSdNbFXIa/preview" width="100%" height="300px" frame-border="0" alt="Dashboard"></iframe>
+        <p>
+            Namun, pemilik dashboard dapat melakukan perubahan klasifikasi secara manual. Untuk melakukan perubahan secara manual, hak admin diperlukan di layanan Power BI.
+        </p>
+     </ol>
+
+     <!-- Point 5 -->
+      <h1 id="menyematkan-tiles-pada-dashboard-power-bi-service">Menyematkan Tiles pada Dashboard Power BI Service</h1>
+      <p>
+        Sistem Tiles pada Power BI Service memungkinkan pengguna untuk menyematkan visualisasi atau grafik individu dari laporan Power BI ke dalam dashboard. Course ini akan mencontohkan untuk menyematkan tiles pada dashboard Power BI Service.
+      </p>
+      <p>
+        Langkah-langkah yang dapat digunakan untuk membangun Report pada Power BI adalah sebagai berikut:
+      </p>
+      <ol type="1">
+        <li>Buka File Power BI yang telah diunduh sebelumnya, file tersebut telah berisi report yang akan digunakan sehingga tidak perlu membangun report terlebih dahulu.</li>
+        <li>Fitur dashboard hanya tersedia pada Power BI Service (app.powerbi.com), sehingga pengguna perlu mempublish report pada Power BI Service, pilih <b>“Publish”</b> pada panel <b>“Home”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1IYrc6o81LoRKseLQ8pNXNJQ1cMoQT8wf/preview" width="100%" height="300px" frame-border="0" alt="Publish Dashboard"></iframe>
+
+        <li>Akan muncul window untuk memasukkan email guna masuk ke akun microsoft, masukkan email yang terdaftar pada akun Microsoft. Lakukan proses masuk ke akun microsoft hingga selesai.</li>
+        <iframe src="https://drive.google.com/file/d/1TojAsnXEw3hFYIHBgHsBM-2POnHKrK87/preview" width="100%" height="300px" frame-border="0" alt="Input Email"></iframe>
+
+        <li>Setelah proses masuk selesai pilih “My Workspace” untuk memilih workspace tempat report disimpan, lalu pilih select seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1Z9pUCMnNZiz3n21ifDXkaafBR6vCnmZo/preview" width="100%" height="300px" frame-border="0" alt="My Workspace"></iframe>
+
+        <li>Tunggu proses publish selesai pada Power BI Desktop seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1_k92xrig7oOwDjjxkkAwgTTCqb1wNjoJ/preview" width="100%" height="300px" frame-border="0" alt="Publish"></iframe>
+
+        <li>Setelah proses publish selesai, buka apps.powerbi.com pada browser di komputer.</li>
+        <li>Setelah Power BI Service terbuka, pilih menu <b>“Ruang Kerja”</b> lalu pilih <b>“Ruang Kerja Saya”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1jAkHm9kJimGDjuxJNhCyMcbHy0kctoXV/preview" width="100%" height="300px" frame-border="0" alt="Ruang Kerja"></iframe>
+
+        <li>Buka report dengan memilih report yang akan digunakan dalam membangun dashboard seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1rB8iiKbFIbmplo9rcn6lueBGGkULgE1k/preview" width="100%" height="300px" frame-border="0" alt="Report"></iframe>
+
+        <li>Tampilan report yang dipilih akan terlihat seperti ilustrasi berikut ini.</li>
+        <iframe src="https://drive.google.com/file/d/10-cQBH9AMGpuer1dskwncqcKzFXj-R14/preview" width="100%" height="300px" frame-border="0" alt="Report View"></iframe>
+
+        <li>Pilih salah satu visualisasi pada report untuk menyematkannya pada Dashboard. Pilih ikon <iframe src="https://drive.google.com/file/d/1FiO02T5TrST8XzKe48kgMR2_Ik3SunwR/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Pin"></iframe> pada visualisasi yang dipilih seperti pada ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1GcchAIh8WrqihdqYtTnr08UTxZJaPHwh/preview" width="100%" height="300px" frame-border="0" alt="Pin Visualization"></iframe>
+
+        <li>Akan muncul pop-up menu baru, ketikkan nama Dashboard yang akan dibuat yaitu “IT Spend”, lalu pilih sematkan seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/16NglDX_bMqxzHPvLui2DUruSrzlIeHmE/preview" width="100%" height="300px" frame-border="0" alt="Pin Dashboard"></iframe>
+
+        <li>Akan muncul pop up pada Power BI Service, pilih “Buka dasbor” seperti pada ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1uSg-a9NuZ-6ntjG5GhAiSqdZneq29yaQ/preview" width="100%" height="300px" frame-border="0" alt="Open Dashboard"></iframe>
+
+        <li>Dashboard yang terbentuk akan seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1OvLCaCRtEwaFzZPb4qfdXI8Ww_8SJqEm/preview" width="100%" height="300px" frame-border="0" alt="Dashboard"></iframe>
+      </ol>
+
+     <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan menyematkan tiles pada Dashboard Power BI Services.
+     </p>
+     <iframe src="https://drive.google.com/file/d/11-PPQ1wAsoiXEReNVccK2jl7Dbn78rJp/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+     <!-- Point 6 -->
+      <h1 id="mengonfigurasi-peringatan-data-pada-power-bi-service">Mengonfigurasi Peringatan Data pada Power BI Service</h1>
+      <p>
+        Mengonfigurasi peringatan data pada Power BI Service adalah cara yang berguna untuk tetap mendapatkan pembaruan dan pemberitahuan ketika data dalam laporan Power BI mencapai ambang batas tertentu. 
+        Course ini akan mencontohkan untuk mengonfigurasi peringatan data pada Power BI Service. Langkah-langkah yang dapat digunakan untuk mengonfigurasi peringatan data pada Power BI adalah sebagai berikut:
+      </p>
+      <ol type="1">
+        <li>Untuk mengonfigurasi peringatan data, diperlukan visualisasi tertentu contohnya yaitu seperti pada ilustrasi di bawah ini. Sematkan visualisasi tersebut pada dashboard menggunakan langkah sebelumnya.</li>
+        <iframe src="https://drive.google.com/file/d/14hPBb5rWQWz1oadpJrt9k74Eze4QnLQV/preview" width="100%" height="300px" frame-border="0" alt="Dashboard"></iframe>
+
+        <li>Pilih ikon <iframe src="https://drive.google.com/file/d/1Ss5XfwXHb-UIPalzn6GoB-Ift9F7M1Z5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Pin"></iframe>, pada visualisasi yang akan diberi peringatan data. Lalu pilih “Kelola Pemberitahuan” seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1LqUEnEcWK_OV2elrd-wn3xvIfMuZz6mc/preview" width="100%" height="300px" frame-border="0" alt="Manage Notifications"></iframe>
+        
+        <li>Pada menu kelola pemberitahuan pilih <b>“Tambah aturan pemberitahuan”</b> seperti pada ilustrasi berikut.</li>
+        <iframe src="https://drive.google.com/file/d/1jlxzOXgEHa8tuZw30pxSjfSHXj_WFTbU/preview" width="100%" height="300px" frame-border="0" alt="Manage Notifications"></iframe>
+
+        <li>Akan dicontohkan untuk mengatur pemberitahuan yang muncul apabila nilai forecast lebih dari 30.000.000, pada menu yang muncul beri nama pada <b>Judul pemberitahuan</b>, contoh “Budget, Forecast”.</li>
+        <iframe src="https://drive.google.com/file/d/1eTbFXT4qWrwZsVzjdLkskwjTDJHxB_od/preview" width="100%" height="300px" frame-border="0" alt="Manage Notifications"></iframe>
+        <p>
+            Pilih “Di atas” pada “Kondisi” dan ketikkan “30000000” pada “Ambang”, kemudian pilih “Sekali setiap 24 jam” pada “Frekuensi pemberitahuan maksimum”. Untuk mengaktifkan fitur pemberitahuan pada email, check list “Kirimi juga saya email” seperti pada ilustrasi di atas.
+        </p>
+
+        <li>Pilih <b>“Simpan dan tutup”</b> untuk menyimpan pengaturan pemberitahuan data seperti pada ilustrasi sebelumnya.</li>
+      </ol>
+
+      <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan menyematkan tiles mengonfigurasi peringatan data pada Power BI Service.
+      </p>
+      <iframe src="https://drive.google.com/file/d/1_tAN4PQtGbO6GoYKD74F8p6tWR_oVQ2b/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+    <!-- Point 7 -->
+     <h1 id="menggunakan-quick-insight-pada-report-power-bi-service">Menggunakan Quick Insight pada report Power BI Service</h1>
+     <p>
+        Quick Insights adalah fitur yang memungkinkan pengguna dapat cepat mendapatkan wawasan dan temuan dari laporan di Power BI Service. Course ini akan mencontohkan cara untuk menggunakan Quick Insight pada Power BI Service. 
+        Langkah-langkah yang dapat digunakan untuk menggunakan Quick Insight pada Power BI Service adalah sebagai berikut:
+     </p>
+     <ol type="1">
+        <li>Pergi menuju halaman <b>“Ruang kerja saya”</b> pada Power BI Service.</li>
+        <li>Pilih ikon <iframe src="https://drive.google.com/file/d/1Ss5XfwXHb-UIPalzn6GoB-Ift9F7M1Z5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Horizontal Triple Dot"></iframe>, pada report yang akan digunakan.</li>
+        <li>Pilih <b>“Quick insight”</b> pada menu yang muncul seperti pada ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1YvFvahTp5kLOzmcnxL1o2taP4ZFUH_aW/preview" width="100%" height="300px" frame-border="0" alt="Quick Insight"></iframe>
+
+        <li>Akan muncul pop up yang menunjukkan status Quick insight, pilih <b>“Lihat wawasan”</b> pada pop up menu tersebut seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1WMrTn3t6vEniFMvXG51HexXsQk9S8W-s/preview" width="100%" height="300px" frame-border="0" alt="Lihat Wawasan"></iframe>
+
+        <li>Halaman browser akan berganti pada halaman Quick Insight seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/13xUsvO53XXgeP0wLcAp2x56WKzoMzZx3/preview" width="100%" height="300px" frame-border="0" alt="Dashboard Quick Insight"></iframe>
+
+        <li>Untuk menambahkan hasil insight tersebut pada dashboard pilih ikon <iframe src="https://drive.google.com/file/d/1FiO02T5TrST8XzKe48kgMR2_Ik3SunwR/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Pin"></iframe>, pada salah satu visualisasi yang terbentuk.</li>
+        <li>Pada menu yang muncul pilih <b>“Dasbor yang sudah ada”</b> lalu <b>“IT Spend”</b> untuk menyematkan visualisasi tersebut pada dashboard IT Spend, lalu pilih <b>“Sematkan”</b> seperti pada ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/17Mu9JIjFqnMvrILKQCyyQn7Eh-WZ7aBI/preview" width="100%" height="300px" frame-border="0" alt="Sematkan ke Dasbor"></iframe>
+
+        <li>Tampilan dashboard yang terbentuk akan seperti pada ilustrasi di bawah ini.</li>        
+     </ol>
+
+     <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan menggunakan quick insight pada report Power BI Service.
+     </p>
+     <iframe src="https://drive.google.com/file/d/14oz4zkRLTD4ZeE524v8h9tfhLmXNXh79/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+     <!-- Point 8 -->
+      <h1 id="mengatur-tema-dashboard-pada-power-bi-service">Mengatur Tema Dashboard pada Power BI Service</h1>
+      <p>
+        Mengatur tema (theme) pada dashboard di Power BI Service memungkinkan pengguna untuk menyesuaikan tampilan dan gaya visual dari dashboard sesuai dengan preferensi atau kebutuhan. 
+        Course ini akan mencontohkan untuk mengatur tema pada dashboard Power BI Service. Langkah-langkah yang dapat digunakan untuk tema pada dashboard Power BI Service adalah sebagai berikut:
+      </p>
+      <ol type="1">
+        <li>Pada dashboard pilih menu <b>“Edit”</b>, lalu pilih <b>“Tema dasbor”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1MBhKK-O8p50lY31Gg3smUrm9-QtlRcnN/preview" width="100%" height="300px" frame-border="0" alt="Sematkan ke Dasbor"></iframe>
+
+        <li>Pada menu <b>“Tema dasbor”</b> pilih jenis tema yang akan digunakan, sebagai contoh pilih tema <b>“Gelap”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1D4eMHHWJp5S6DcMYv5IXvK6FSeUNLpaC/preview" width="100%" height="300px" frame-border="0" alt="Tema Dasbor"></iframe>
+
+        <li>Pilih simpan seperti pada ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1cCb0KBUFhz5SIJHnwIrHcqM6tazml91U/preview" width="100%" height="300px" frame-border="0" alt="Simpan"></iframe>
+
+        <li>Tampilan dashboard akan menjadi seperti ilustrasi berikut.</li>
+        <iframe src="https://drive.google.com/file/d/1kiY4eJBfLebetKCzEUYr1J1FNkoX3kHN/preview" width="100%" height="300px" frame-border="0" alt="Dashboard"></iframe>
+      </ol>
+
+      <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan mengatur tema dashboard pada Power BI Service.
+      </p>
+      <iframe src="https://drive.google.com/file/d/1Ik1IS04_Ca9ThLfMlO331JIqkm1_ad0Q/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    
+    <!-- Point 9 -->
+     <h1 id="menyematkan-satu-halaman-pada-dashboard">Menyematkan Satu Halaman pada Dashboard</h1>
+     <p>
+        Menyematkan satu halaman pada dashboard di Power BI Service memungkinkan pengguna untuk menampilkan konten atau visualisasi dari satu halaman laporan sebagai bagian dari dashboard. 
+        Course ini akan mencontohkan untuk mengatur tema pada dashboard Power BI Service. 
+        Langkah-langkah yang dapat digunakan untuk tema pada dashboard Power BI Service adalah sebagai berikut:
+     </p>
+     <ol type="1">
+        <li>Pergi menuju halaman report yang akan disematkan</li>
+        <li>Pilih ikon <iframe src="https://drive.google.com/file/d/1Ss5XfwXHb-UIPalzn6GoB-Ift9F7M1Z5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Horizontal Triple Dot"></iframe> di samping menu “Edit”, lalu pilih “Sematkan ke dasbor” seperti ilustrasi di bawah ini</li>
+        <iframe src="https://drive.google.com/file/d/1ifWWA2b3mIyDDEfNzrvHvmVkRtxUy2kI/preview" width="100%" height="300px" frame-border="0" alt="Sematkan ke Dasbor"></iframe>
+
+        <li>Pada menu yang muncul pilih “Dasbor yang sudah ada” dan “IT Spend”, lalu pilih “Semat dinamis” seperti ilustrasi di bawah ini</li>
+        <iframe src="https://drive.google.com/file/d/1k0EcRLhgXa9kGm3svWriNB91lOxDr05p/preview" width="100%" height="300px" frame-border="0" alt="Sematkan ke Dasbor"></iframe>
+
+        <li>Tampilan dashboard akan berubah menjadi seperti ilustrasi di bawah ini</li>
+        <iframe src="https://drive.google.com/file/d/1iczF1-lJGX5S4-4uLMX-mfRK5pKiwy-X/preview" width="100%" height="300px" frame-border="0" alt="Dashboard"></iframe>
+     </ol>
+
+     <p>
+        Berikut adalah video langkah-langkah praktik menyematkan satu halaman pola dashboard pada Power BI Service.
+     </p>
+     <iframe src="https://drive.google.com/file/d/1iP-karqRBQnLMnXPxIaeWl8BSbdj1z-s/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+    <!-- Point 10 -->
+     <h1 id="tips-dashboard-efektif-dan-interaktif">Tips Dashboard Efektif dan Interaktif</h1>
+     <p>
+        Saat merancang sebuah dasbor, penting untuk mempertimbangkan bagaimana informasi disajikan dapat mempengaruhi penggunaan dan pemahaman pengguna. Berikut adalah beberapa tips yang dapat membantu pengguna mengoptimalkan tata letak dasbor untuk audiens:
+     </p>
+     <ol type="1">
+        <li>Pertimbangan Audiens</li>
+        <p>
+            Pertimbangkan bagaimana audiens akan menggunakan dasbor. Apakah mereka memerlukan tinjauan cepat atau detail yang lebih mendalam? Tinjau penggunaan dasbor dari perspektif pengguna akhir untuk memastikan informasi yang disajikan relevan dan mudah diakses.
+        </p>
+        <li>Tempatkan Semua Informasi yang Penting dalam Satu Layar</li>
+        <p>
+            Idealnya, usahakan agar semua informasi yang penting dapat dilihat dalam satu layar. Ini mempermudah pengguna untuk mendapatkan gambaran menyeluruh tanpa perlu melakukan banyak scroll.
+        </p>
+        <li>Gunakan Visualisasi yang Tepat</li>
+        <p>
+            Pilih visualisasi yang sesuai untuk data. Hindari visualisasi yang rumit atau tidak intuitif. Misalnya, gunakan diagram batang untuk perbandingan nilai, bukan diagram lingkaran untuk kategori yang lebih dari delapan.
+        </p>
+        <li>Hindari Informasi yang Tidak Diperlukan</li>
+        <p>
+            Hapus informasi yang tidak diperlukan atau detail yang tidak relevan dari dasbor. Ini membantu menjaga dasbor tetap jelas dan fokus pada informasi yang benar-benar dibutuhkan.
+        </p>
+        <li>Konsistensi dan Kejelasan</li>
+        <p>
+            Pastikan konsistensi dalam penggunaan warna, skala, dan label. Ini membantu memudahkan pemahaman dan interpretasi data oleh pengguna.
+        </p>
+     </ol>
+
+</div>

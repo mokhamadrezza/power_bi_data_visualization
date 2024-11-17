@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bekerja dengan AI Insight pada Power BI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="Judul">Bekerja dengan AI Insight pada Power BI</h1>
+        </div>
+<style>
+    
+body{
+    background-color: #fff;
+}
+
+.container{
+    background-color: #fff;
+    padding-top: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 3%;
+}
+
+.container .header{
+    color: black;
+}
+
+.Judul{
+    font-size: 2.6vw;
+    text-align: left;
+    font-weight: bolder;
+    margin: 1%;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.content-box{
+    max-width: 90vw;
+    min-width: 30%;
+    border: 0.1vw solid #4471C4;
+    background-color: #fff;
+    box-shadow: 0.4vw 0.4vw 1.5vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.2vw;
+    margin: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    text-align: justify;
+}
+
+.content-box h2{
+    font-size: x-large;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: inline-flex;
+    align-content: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    max-width: 90vw;
+}
+
+.content-box ul{
+    list-style-type: disc;
+    padding-left: 2.5%;
+    margin-left: 1%;
+    font-size: 16px;
+    line-height: 2.5;
+    max-width: 90vw;
+}
+
+.content-box ul li{
+    max-width: 90vw;
+}
+
+.top-box{
+    margin-bottom: 0.5%;
+    max-width: 90vw;
+}
+
+.no-bullets{
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 90vw;
+}
+
+.no-bullets ul{
+    padding-left: 3%; /* Menambahkan indentasi untuk daftar bersarang */
+    max-width: 90vw;
+}
+
+.note-box{
+    display: flex;
+    max-width: 90vw;
+    height: auto;
+    padding: 1%;
+    border-radius: 1vw;
+    border: 0.1vw solid #000;
+    background-color: #CFE1F3; /* Warna latar belakang seperti catatan */
+    box-shadow: 0.3vw 0.3vw 1vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    position: relative;
+}
+
+.note-box span {
+    margin-top: 0%;
+    font-size: 1.6vw;
+    font-family: calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+    font-weight: bolder;
+}
+
+.note-box h2{
+    margin-top: 0;
+    max-width: fit-content;
+    font-size: 30px;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+
+.note-box p{
+    margin: 0;
+    max-width: 90vw;
+    font-size: 1.4vw;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+/* Style for h1 */
+h1{
+    font-size: 1.6vw; /* Ukuran font 20 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    color: #1f2855;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for h2 */
+h2{
+    font-size: 1.8vw; /* Ukuran font 18 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/*Style for h3 */
+h3 {
+    font-size: 1.6vw;
+    font-weight: bolder;
+    font-family: calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /*Jarak spasi 1/5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for p */
+p{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+/* Style for ul and ol */
+ul, ol{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for li */
+li{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+
+.small-text{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.large-text {
+    line-height: 1.5; /* Jarak Spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    vertical-align: top;
+}
+
+.Tools{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.Tipe{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 0%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.pic {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    height: auto;
+}
+
+iframe{
+    max-width: 75%;
+    min-height: auto;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 0.1vw solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-size: 1.2vw;
+}
+th {
+    background-color: #2796a3; /* Warna Latar Belakang untuk Baris Pertama */
+    color: white;
+    text-align: center;
+    font-size: 1.2vw;
+}
+tr:hover {
+    background-color: beige;
+}
+
+font {
+    max-width: 100%;
+}
+
+.kotak {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 1.5vw;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #2796a3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<div class="content-box"> <!-- Berisi Poin-poin Konten-->
+    <h2>
+        <img src="https://drive.google.com/thumbnail?id=1OSwy6Vn5jv8ERj5uV-d5abA8LFGNXV9x" alt="Content Image" style="vertical-align: middle; margin-right: 10px; max-width: 40px; max-height: 40px; padding-top: 10px;">Content
+    </h2>
+    <ul class="no-bullets" style="color: blue;">
+        <li><a href="#lebih-dekat-dengan-fitur-ai-insight-pada-power-bi" target="_blank" style="color: blue;">Lebih Dekat dengan Fitur AI Insight pada Power BI</a></li>
+        <li><a href="#pentingnya-fitur-ai-insight-pada-power-bi" target="_blank" style="color: blue;">Pentingnya Fitur AI Insight pada Power BI</a></li>
+        <li><a href="#komponen-ai-insight-pada-power-bi" target="_blank" style="color: blue;">Komponen AI Insight pada Power BI</a></li>
+        <li><a href="#implementasi-text-analytics-power-bi" target="_blank" style="color: blue;">Implementasi Text Analytics Power BI</a></li>        
+    </ul>
+     
+</div>
+
+<div class="content-box">
+    <!--Point 1-->
+    <h1 id="#lebih-dekat-dengan-fitur-ai-insight-pada-power-bi">Lebih Dekat dengan Fitur AI Insight pada Power BI</h1>
+    <p>
+        Power BI memberikan fitur yang mendukung analitik lanjutan dengan menyediakan kemampuan Automated Machine Learning (AutoML) untuk menganalisis dan memodelkan data, seperti pemodelan prediktif, analitik teks, dan analitik gambar.
+    </p>
+    <iframe src="https://drive.google.com/file/d/1I2NQuJMU-Ye1Y4TnhsHSoJ2tBC-1CxSQ/preview" width="100%" height="300px" frame-border="0" alt="AI Insight"></iframe>
+
+    <p>
+        <b>AI Insights adalah fitur di Power BI yang memungkinkan pengguna untuk mengakses kumpulan model pembelajaran mesin yang telah dilatih sebelumnya untuk meningkatkan upaya persiapan data</b>. 
+        Dengan AI Insight, Power BI dapat secara otomatis menganalisis data untuk mengidentifikasi pola, tren, anomali, dan informasi berharga lainnya.
+    </p>
+    <p class="kotak" style="color: #fff;">
+        <b>Note:</b>
+        <br> <b>Fitur AI Insight hanya tersedia pada versi Power BI Pro, sehingga membutuhkan langganan pada layanan Power BI.</b>
+    </p>
+    
+    <!--Point 2-->
+    <h1 id="pentingnya-fitur-ai-insight-pada-power-bi">Pentingnya Fitur AI Insight pada Power BI</h1>
+    <p>
+        Fitur AI Insight memberikan kemudahan bagi penggunanya dalam proses analisis dan visualisasi data Fitur AI Insights pada Power BI memiliki beberapa manfaat yang memudahkan pengguna, diantaranya adalah:
+    </p>
+
+    <ol type="1">
+        <li>
+            Memungkinkan pengguna untuk mengakses kumpulan model pembelajaran mesin yang telah dilatih sebelumnya untuk meningkatkan upaya persiapan data.
+        </li>
+        <li>
+            Mendukung analitik lanjutan dengan menyediakan kemampuan Automated Machine Learning (AutoML) untuk menganalisis dan memodelkan data, seperti pemodelan prediktif, analitik teks, dan analitik gambar.
+        </li>
+        <li>
+            Dapat membantu pengguna mengidentifikasi tren dan membuka wawasan yang tersembunyi dalam data.
+        </li>
+        <li>
+            Dapat digunakan untuk melakukan berbagai tugas analitik lanjutan, seperti deteksi bahasa, analisis sentimen, ekstraksi frasa kunci, dan pemberian tag gambar.
+        </li>
+        <li>
+            Dapat membantu pengguna membuat keputusan yang lebih terinformasi dan mengidentifikasi faktor-faktor yang mempengaruhi kinerja bisnis mereka.
+        </li>
+    </ol> 
+
+    <!--Point 3-->
+    <h1 id="komponen-ai-insight-pada-power-bi">Komponen AI Insight pada Power BI</h1>
+    <p>
+        Komponen AI Insight pada Power BI merupakan seperangkat fitur dan kemampuan yang kuat, yang memungkinkan pengguna untuk melakukan analisis yang lebih mendalam atas data yang dimasukkan ke dalam platform ini.
+    </p>
+    <iframe src="https://drive.google.com/file/d/13zniB0Zs6bos6nXkFVi3uBohW70AgwDL/preview" width="100%" height="300px" frame-border="0" alt="DAX Formula Syntax"></iframe>
+
+    <p>
+        Power BI telah diperkaya dengan tiga komponen utama yang memungkinkan analisis berbasis teks, visual, dan pemodelan data yang lebih kompleks. Berikut adalah tiga komponen dalam AI Insight:
+    </p>
+    
+    <ol type="1">
+        <li>
+            <b>Text Analytics</b>
+        </li>
+        <iframe src="https://drive.google.com/file/d/1Y8BbktqZ_kQmZw6B35NAQNJuDZbVYY9G/preview" width="100%" height="300px" frame-border="0" alt="Text Analytics"></iframe>
+
+        <p>
+            Text Analytics pada AI Insight Power BI adalah komponen yang memungkinkan analisis teks dan penggalian wawasan dari data berbasis teks dalam laporan Power BI. 
+            Berikut adalah beberapa fitur dan kemampuan utama dari Text Analysis dalam Power BI:
+        </p>
+        <ol type="a">
+            <li>Language Detection (Deteksi Bahasa): Text Analysis dapat mendeteksi bahasa yang digunakan dalam teks, memungkinkan pengguna untuk memproses teks sesuai dengan bahasa yang benar.</li>
+            <li>Extract key phrase (Ekstraksi Frasa Kunci): Text Analysis dapat mengekstraksi frasa atau kata kunci yang paling penting dari teks, membantu dalam mengidentifikasi inti dari informasi yang terkandung dalam teks.</li>
+            <li>Score Sentiment: Text analysis dapat memberikan nilai yang digunakan untuk mengindikasikan sentimen atau perasaan yang terkandung dalam teks. Sentimen ini bisa positif, negatif, atau netral, dan skor sentimen menggambarkan sejauh mana teks tersebut tergolong dalam salah satu dari kategori.</li>
+        </ol>
+
+        <li>
+            <b>Vision</b>
+        </li>
+        <iframe src="https://drive.google.com/file/d/1YZTE9iCFhbbNg-n5c5iAD7-qHOQaipc2/preview" width="100%" height="300px" frame-border="0" alt="Vision"></iframe>
+        
+        <p>
+            Vision dalam AI Insight Power BI adalah komponen yang memungkinkan analisis berbasis visual atau pengenalan objek dalam gambar serta pemahaman konten visual. 
+            Komponen Vision ini memanfaatkan teknologi pemrosesan gambar dan pemahaman visual yang didukung oleh artificial intelligence (AI) atau kecerdasan buatan untuk membantu pengguna memahami data visual dalam laporan Power BI. 
+            Fitur Tag Image pada Vision dalam AI insight berfungsi memberikan label atau tag pada objek dari gambar. 
+            Dengan cara ini, pengguna dapat mengorganisasi dan mengelompokkan gambar atau objek yang serupa berdasarkan karakteristik atau kategori tertentu.
+        </p>
+        
+        <li>
+            <b>Azure Machine Learning</b>
+        </li>
+        <p>
+            DAX formula dapat disebut sebagai kalkulasi karena menghitung nilai input dan mengembalikan nilai yang dihasilkan. 
+            Dua tipe ekspresi atau kalkulasi DAX dalam Power BI adalah:
+        </p>
+        <iframe src="https://drive.google.com/file/d/1kvemkeFWPv_yZ5LGa63ak-lI2g3ijCTU/preview" width="100%" height="300px" frame-border="0" alt="Azure Machine Learning"></iframe>
+        
+        <p>
+            Azure Machine Learning (AML) pada AI Insight Power BI adalah integrasi yang memungkinkan pengguna untuk menggabungkan model pembelajaran mesin yang telah dilatih pengguna di platform Azure Machine Learning ke dalam laporan Power BI. 
+            Ini memberikan kemampuan analisis yang lebih lanjut dan prediksi berdasarkan model pembelajaran mesin yang kuat. 
+            Untuk menggunakan fitur Azure Machine Learning pada Power BI, pengguna harus memiliki lisensi Premium Power BI.
+        </p>
+    
+    <!-- Point 4 -->
+     <h1 id="implementasi-text-analytics-power-bi">Implementasi Text Analytics Power BI</h1>
+     <p>
+        Sebelum memulai analisis data pada Power BI, diperlukan suatu dataset, unduh file <a href="https://docs.google.com/spreadsheets/d/1Fg7MIWqo4Ezx-Q436_H5Ot1s2eqC49yx/edit?usp=drive_link&ouid=112804528838929674246&rtpof=true&sd=true" target="_blank" style="color: blue;">dataset IMDB Review</a> yang akan digunakan pada course ini. 
+        IMDB Review merupakan data publik yang memuat informasi review publik terhadap suatu film atau tayangan tv.
+     </p>
+     <iframe src="https://drive.google.com/file/d/1NSJaKgAdiLBbFjrw062-8ceTMK7EEvbA/preview" width="100%" height="300px" frame-border="0" alt="IMDB Review"></iframe>
+
+     <p>
+        Course ini akan memberikan contoh analisis sentimen review dan meringkas review menjadi beberapa frasa kunci, berikut adalah langkah-langkahnya:
+     </p>
+
+     <ol type="1">
+        <li>Pada menu <b>“Home”</b> pilih <b>“Transform Data”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1aJTAkN0c8skNLVs1C8cVfUiWqza_xisv/preview" width="100%" height="300px" frame-border="0" alt="Home"></iframe>
+
+        <li>Pada Power Query Editor yang terbuka, pilih <b>“Text Analytics”</b> di menu <b>“Add Column”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/110W1JWXQkMUj8hNhGn3dFs1ji-r-ZlQN/preview" width="100%" height="300px" frame-border="0" alt="Home"></iframe>
+
+        <li>Pada window <b>“Text Analytic”</b> yang terbuka pilih <b>“Detect languange”</b>.</li>
+        <li>
+            Pilih ikon 
+            <iframe src="https://drive.google.com/file/d/1gpD8vtNsxWOg8pqQZeGpXBnUCmgYdb9U/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon ABC"></iframe>
+            , lalu ubah menjadi “Column Name”.
+        </li>
+        <li>Pilih kolom <b>“review”</b> seperti pada ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1-2sgKA0wEfE3ygf2d3no4u4JRnEJpyqK/preview" width="100%" height="300px" frame-border="0" alt="Review Column Name"></iframe>
+
+        <li>Pilih <b>“OK”</b> untuk menutup window dan menyelesaikan proses deteksi bahasa seperti ilustrasi di atas</li>
+        <li>Pilih <b>“Continue”</b> pada peringatan yang muncul seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1P2uDwIF_PMsJAb5FvVMkoKp5Xw_oNzET/preview" width="100%" height="300px" frame-border="0" alt="Continue"></iframe>
+
+        <li>Checklist pada window <b>“Privacy levels”</b> yang muncul, lalu pilih <b>“Save”</b> seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1ruxVsadOYCvvocVPlgwQWiM5AT-G5YlT/preview" width="100%" height="300px" frame-border="0" alt="Privacy Levels"></iframe>
+
+        <li>Akan muncul 2 kolom baru yaitu “Detect language.Detected Language Name” dan “Detect language.Detected Language ISO Code” yang berisi bahasa dari review dan ISO Code seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1BojHX-1Eg4hDM9M7XuzDsfTMsbHvP8tb/preview" width="100%" height="300px" frame-border="0" alt="ISO Code"></iframe>
+
+        <li>Buka kembali <b>“Text Analytics”</b>, pada menu <b>“Add Column”</b>.</li>
+        <li>Pada window “Text Analytic” yang terbuka pilih <b>“Extract key phrases”</b>.</li>
+        <li>
+            Pada sesi <b>“Text”</b> pilih <b>“Column Name”</b> dengan ikon  
+            <iframe src="https://drive.google.com/file/d/1K-h3QF34YJQqPA3FcTH2F0482K9mXBnz/preview" width="20px" height="20px" style="vertical-align: middle;" frame-border="0" alt="Column Name"></iframe>
+            , lalu pilih kolom <b>“review”</b>.
+        </li>
+
+        <li>
+            Pada sesi <b>“Language ISO code (optional)”</b> pilih <b>“Column Name”</b> dengan ikon  
+            <iframe src="https://drive.google.com/file/d/1K-h3QF34YJQqPA3FcTH2F0482K9mXBnz/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Column Name"></iframe>
+            , lalu pilih <b>“Detect language.Detected Language ISO Code”</b>.
+        </li>
+
+        <li>Pilih “OK” untuk menyelesaikan seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1JWK3JU0VPC0nIPN_zVUb8dR-xYqIG95L/preview" width="100%" height="300px" frame-border="0" alt="Klik OK"></iframe>
+
+        <li>Akan muncul 2 kolom baru kembali yaitu “Extract key phrases” dan “Extract key.phrases.KeyPhrases” yang berisi frasa kunci dari review, seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1FMkadsABx8NTE2bdKBkSr6dfhwhtC-JX/preview" width="100%" height="300px" frame-border="0" alt="Extract Key Phrases"></iframe>
+
+        <li>Buka kembali <b>“Text Analytics”</b>, pada menu <b>“Add Column”</b>.</li>
+        <li>Pada window “Text Analytics” yang terbuka pilih <b>“Score sentiment”</b>.</li>
+        <li>Pada sesi <b>“Text”</b> pilih <b>“Column Name”</b> dengan ikon  
+            <iframe src="https://drive.google.com/file/d/1K-h3QF34YJQqPA3FcTH2F0482K9mXBnz/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Column Name"></iframe>
+            , lalu pilih kolom <b>“review”</b>.
+        </li>
+
+        <li>Pada sesi <b>“Language ISO code (optional)”</b> pilih <b>“Column Name”</b> dengan ikon 
+            <iframe src="https://drive.google.com/file/d/1K-h3QF34YJQqPA3FcTH2F0482K9mXBnz/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Column Name"></iframe>
+            , lalu pilih <b>“Detect language.Detected Language ISO Code”</b>.
+        </li>
+
+        <li>Pilih “OK” untuk menyelesaikan seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1mpHWVHW-AlJzIZP4Q7cBAoI2uaPantJV/preview" width="100%" height="300px" frame-border="0" alt="Extract Key Phrases"></iframe>
+
+        <li>Akan muncul kolom baru yaitu “Score sentiment” yang berisi nilai sentimen dari review, seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1GSx1-igS_9W7Z8NsywTVc3d2lRbVSsGY/preview" width="100%" height="300px" frame-border="0" alt="Score Sentiment"></iframe>
+     </ol>
+
+     <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan implementasi text analytics pada Power BI.
+     </p>
+     <iframe src="https://drive.google.com/file/d/1TTDTZOhG5hOkluLbBvD8xdJcGIHqkWZN/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+</div>

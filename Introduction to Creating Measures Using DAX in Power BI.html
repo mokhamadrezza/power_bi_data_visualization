@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Creating Measures Using DAX in Power BI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="Judul">Introduction to Creating Measures Using DAX in Power BI</h1>
+        </div>
+<style>
+    
+body{
+    background-color: #fff;
+}
+
+.container{
+    background-color: #fff;
+    padding-top: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 3%;
+}
+
+.container .header{
+    color: black;
+}
+
+.Judul{
+    font-size: 2.6vw;
+    text-align: left;
+    font-weight: bolder;
+    margin: 1%;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.content-box{
+    max-width: 90vw;
+    min-width: 30%;
+    border: 0.1vw solid #4471C4;
+    background-color: #fff;
+    box-shadow: 0.4vw 0.4vw 1.5vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.2vw;
+    margin: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    text-align: justify;
+}
+
+.content-box h2{
+    font-size: x-large;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: inline-flex;
+    align-content: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    max-width: 90vw;
+}
+
+.content-box ul{
+    list-style-type: square;
+    padding-left: 2.5%;
+    margin-left: 1%;
+    font-size: 16px;
+    line-height: 2.5;
+    max-width: 90vw;
+}
+
+.content-box ul li{
+    max-width: 90vw;
+}
+
+.top-box{
+    margin-bottom: 0.5%;
+    max-width: 90vw;
+}
+
+.no-bullets{
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 90vw;
+}
+
+.no-bullets ul{
+    padding-left: 3%; /* Menambahkan indentasi untuk daftar bersarang */
+    max-width: 90vw;
+}
+
+.note-box{
+    display: flex;
+    max-width: 90vw;
+    height: auto;
+    padding: 1%;
+    border-radius: 1vw;
+    border: 0.1vw solid #000;
+    background-color: #CFE1F3; /* Warna latar belakang seperti catatan */
+    box-shadow: 0.3vw 0.3vw 1vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    position: relative;
+}
+
+.note-box span {
+    margin-top: 0%;
+    font-size: 1.6vw;
+    font-family: calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+    font-weight: bolder;
+}
+
+.note-box h2{
+    margin-top: 0;
+    max-width: fit-content;
+    font-size: 30px;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+
+.note-box p{
+    margin: 0;
+    max-width: 90vw;
+    font-size: 1.4vw;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+/* Style for h1 */
+h1{
+    font-size: 1.6vw; /* Ukuran font 20 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    color: #1f2855;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for h2 */
+h2{
+    font-size: 1.8vw; /* Ukuran font 18 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/*Style for h3 */
+h3 {
+    font-size: 1.6vw;
+    font-weight: bolder;
+    font-family: calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /*Jarak spasi 1/5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for p */
+p{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+/* Style for ul and ol */
+ul, ol{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for li */
+li{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+
+.small-text{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.large-text {
+    line-height: 1.5; /* Jarak Spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    vertical-align: top;
+}
+
+.Tools{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.Tipe{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 0%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.pic {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    height: auto;
+}
+
+iframe{
+    max-width: 75%;
+    min-height: auto;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 0.1vw solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-size: 1.2vw;
+}
+th {
+    background-color: #2796a3; /* Warna Latar Belakang untuk Baris Pertama */
+    color: white;
+    text-align: center;
+    font-size: 1.2vw;
+}
+tr:hover {
+    background-color: beige;
+}
+
+font {
+    max-width: 100%;
+}
+
+.kotak {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 1.5vw;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #2796a3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<div class="content-box"> <!-- Berisi Poin-poin Konten-->
+    <h2>
+        <img src="https://drive.google.com/thumbnail?id=1OSwy6Vn5jv8ERj5uV-d5abA8LFGNXV9x" alt="Content Image" style="vertical-align: middle; margin-right: 10px; max-width: 40px; max-height: 40px; padding-top: 10px;">Content
+    </h2>
+    <ul class="no-bullets" style="color: blue;">
+        <li><a href="#definisi-data-analysis-expressions" target="_blank" style="color: blue;">Definisi Data Analysis Expressions (DAX)</a></li>
+        <li><a href="#poin-penting-data-analysis-expressions" target="_blank" style="color: blue;">Poin Penting Data Analysis Expressions (DAX)</a></li>
+        <li><a href="#konsep-data-analysis-expressions" target="_blank" style="color: blue;">Konsep Data Analysis Expressions (DAX)</a></li>
+        <li><a href="#tools-dalam-data-analysis-expressions" target="_blank" style="color: blue;">Tools Dalam Data Analysis Expressions (DAX)</a></li>
+        <li><a href="#membangun-measure-menggunakan-dax" target="_blank" style="color: blue;">Membangun Measure menggunakan DAX</a></li>
+        <li><a href="#membangun-kalkulasi-kolom-menggunakan-dax" target="_blank" style="color: blue;">Membangun Kalkulasi Kolom menggunakan DAX</a></li>
+        <li><a href="#membangun-tabel-kalkulasi-menggunakan-dax" target="_blank" style="color: blue;">Membangun Tabel Kalkulasi menggunakan DAX</a></li> 
+    </ul>
+     
+</div>
+
+<div class="content-box">
+    <!--Point 1-->
+    <h1 id="#definisi-data-analysis-expressions">Definisi Data Analysis Expressions (DAX)</h1>
+    <p>
+        <b>Data Analysis Expressions (DAX)</b> merupakan kumpulan fungsi, operator, dan konstanta yang dapat digunakan dalam rumus, atau ekspresi, untuk menghitung dan menampilkan satu atau lebih nilai yang digunakan dalam Power BI, Analysis Services, dan Power Pivot di Excel.
+    </p>
+    <iframe src="https://drive.google.com/file/d/121hEJfEcJsHbsIprMC5sMCCLUXLEMxmq/preview" width="100%" height="300px" frame-border="0" alt="DAX"></iframe>
+
+    <p>
+        DAX memungkinkan pengguna untuk melakukan perhitungan dan query tingkat lanjut pada data dalam tabel dan kolom terkait dalam model data tabular. DAX adalah alat yang kuat untuk analisis dan manipulasi data, dan dapat digunakan untuk memecahkan berbagai masalah perhitungan dan analisis data dasar. 
+        Data Analysis Expressions (DAX) memberikan kesempatan pada pengguna untuk menghasilkan perhitungan yang kompleks.
+    </p>
+    
+    <!--Point 2-->
+    <h1 id="poin-penting-data-analysis-expressions">Poin Penting Data Analysis Expression (DAX)</h1>
+    <p>
+        DAX bukan merupakan bahasa pemrograman, melainkan bahasa rumus yang digunakan untuk menentukan penghitungan khusus untuk kolom dan calculated measure (juga dikenal sebagai calculated fields). 
+        DAX menyertakan beberapa fungsi yang digunakan dalam rumus Excel, dan fungsi tambahan yang dirancang untuk bekerja dengan data relasional dan melakukan agregasi dinamis. 
+        Berikut adalah beberapa poin dalam DAX yang perlu diperhatikan:
+    </p>
+
+    <ol type="1">
+        <li>
+            DAX adalah bahasa fungsional (functional language) yang memiliki kode lengkap selalu berupa fungsi. 
+            Ekspresi DAX yang dapat dieksekusi mungkin berisi pernyataan kondisional, fungsi bertumpuk (nested function), referensi nilai, dan lain-lain.
+        </li>
+        <li>
+            Rumus DAX memiliki dua tipe data primer yaitu numerik dan non-numerik. Tipe data numerik meliputi bilangan bulat, desimal, mata uang, dll. 
+            Sedangkan tipe data non-numerik terdiri dari string dan objek biner.
+        </li>
+        <li>
+            Ekspresi DAX dievaluasi dari fungsi terdalam hingga fungsi terluar terakhir. Hal ini mengakibatkan penulisan rumus yang benar pada DAX menjadi penting.
+        </li>
+    </ol>
+
+    <p>
+        Pada DAX pengguna dapat menggunakan nilai tipe data campuran sebagai input dalam rumus DAX dan konversi akan berlangsung secara otomatis selama eksekusi rumus. 
+        Nilai output akan dikonversi menjadi tipe data yang diinstruksikan untuk rumus DAX.
+    </p>   
+
+    <!--Point 3-->
+    <h1 id="konsep-data-analysis-expressions">Konsep Data Analysis Expression (DAX)</h1>
+    <p>
+        DAX (Data Analysis Expressions) telah menjadi bahasa formula yang penting dalam dunia bisnis dan analisis data. <b>DAX digunakan dalam berbagai platform analisis data, termasuk Microsoft Power BI, Power Pivot, dan Analysis Services Tabular Mode</b>. 
+        Berikut adalah konsep fundamental dalam DAX yang digunakan dalam analisis data pada Power BI:
+    </p>
+    
+    <ol type="1">
+        <li>
+            <b>Data Analysis Expressions (DAX) Formula &minus; Syntax</b>
+        </li>
+        <p>
+            Syntax merupakan seluruh elemen yang dapat digunakan untuk membangun sebuah formula kalkulasi atau dapat disimpulkan bahwa syntax merupakan cara penulisan atau bagaimana formula akan ditulis. 
+            Beberapa elemen syntax DAX yang perlu diperhatikan adalah sebagai berikut:
+        </p>
+        <ol type="a">
+            <li>Nama Measure</li>
+            <li>Equals Operator</li>
+            <li>DAX Functions</li>
+            <li>Parenthesis</li>
+            <li>Reference Table</li>
+            <li>Reference Column</li>
+        </ol>
+        <iframe src="https://drive.google.com/file/d/1LbRfAkVGxSiowPwVyZ1qoLu4YKVp2eme/preview" width="100%" height="300px" frame-border="0" alt="DAX Formula Syntax"></iframe>
+        <p>
+            Contoh penerapan dari syntax DAX adalah sebagai berikut:
+        </p>
+        <p style="color: #4471C4;"><b>"Total Sales = SUM(Sales[SalesAmount])"</b></p>
+        <p>
+            Syntax di atas bertujuan untuk menghitung total penjualan dengan cara menambahkan setiap nilai dari kolom <b>“SalesAmount”</b> dari tabel <b>“Sales”</b>.
+        </p>
+
+        <li>
+            <b>Data Analysis Expressions (DAX) Calculation Types</b>
+        </li>
+        <p>
+            DAX formula dapat disebut sebagai kalkulasi karena menghitung nilai input dan mengembalikan nilai yang dihasilkan. 
+            Dua tipe ekspresi atau kalkulasi DAX dalam Power BI adalah:
+        </p>
+        <ol type="a">
+            <li>
+                <b>Calculated Columns</b>: membuat kolom baru di tabel yang sudah ada, digunakan ketika akan membuat kolom dengan informasi yang difilter atau diurutkan.
+            </li>
+            <li>
+                <b>Calculated Measures</b>: menciptakan bidang yang memiliki nilai agregat seperti jumlah, rasio, persentase, rata-rata, dan lain-lain.
+            </li>
+            <iframe src="https://drive.google.com/file/d/13psF0Xm1qzNlri7eiTG8YpHCa0orF9R0/preview" width="100%" height="300px" frame-border="0" alt="Measures"></iframe>
+        </ol>
+
+        <li>
+            <b>Data Analysis Expressions (DAX) Functions</b>
+        </li>
+        <p>
+            <b>Fungsi DAX adalah rumus yang menghitung nilai dalam argumen dapat berupa kolom, angka, teks, atau lainnya</b>. 
+            Setiap fungsi DAX melakukan operasi tertentu pada nilai tersebut. Beberapa poin penting fungsi DAX adalah:
+        </p>
+        <ol type="a">
+            <li>Fungsi DAX selalu merujuk pada seluruh kolom/bidang atau tabel, dan tidak akan pernah merujuk pada nilai individu.</li>
+            <li>Fungsi DAX memberikan fleksibilitas untuk membuat formula yang diterapkan secara baris per baris.</li>
+            <li>Dalam beberapa kasus, fungsi DAX mengeluarkan output tabel lengkap (full tabel) yang dapat digunakan dalam formula DAX lain yang membutuhkan satu set himpunan nilai.</li>
+            <li>Fungsi DAX memiliki kategori yang dikenal sebagai fungsi time intelligence seperti fungsi yang digunakan untuk menghitung waktu.</li>
+
+            <iframe src="https://drive.google.com/file/d/1HVzTovkUtpBd_b9TeAYhjULgPvsXkJAm/preview" width="100%" height="300px" frame-border="0" alt="Fungsi DAX"></iframe>
+        </ol>
+
+        <li>
+            <b>Data Analysis Expressions (DAX) Context</b>
+        </li>
+        <p>
+            Konsep konteks DAX penting dalam memperoleh pemahaman lengkap tentang bahasa DAX dan cara kerja pada Power BI. Berikut dua jenis konteks DAX:
+        </p>
+        <ol type="a">
+            <li>
+                <b>Row context</b>: memperhitungkan baris tertentu yang telah difilter dalam ekspresi DAX. Row context berfokus pada pengoperasian rumus pada baris saat ini. 
+                Jenis konteks ini paling sering diterapkan pada ukuran baris.
+            </li>
+            <li>
+                <b>Filter context</b>: formula atau DAX expression berfokus kepada value spesifik di dalam sebuah baris. 
+                Filter Context diaplikasikan ketika menggunakan functions seperti CALCULATE, FILTER, RELATED, ALL, dan sebagainya.
+            </li>
+
+            <iframe src="https://drive.google.com/file/d/1SAdUmZt0oTXx7pl5ApVdOfBAn4c_Hw-d/preview" width="100%" height="300px" frame-border="0" alt="DAX Context"></iframe>
+        </ol>
+
+        <!-- Point 4 -->
+        <h1 id="tools-dalam-data-analysis-expressions">Tools Dalam Data Analysis Expressions (DAX)</h1>
+        <p>
+            DAX dapat membantu memperoleh hasil data yang maksimal. Mempelajari berbagai tools seperti rumus dan ekspresi DAX dibutuhkan untuk meningkatkan pemahaman. 
+            Berikut adalah tools yang umum digunakan dalam DAX:
+        </p>
+        <ol type="1">
+            <li><b>FILTER</b></li>
+            <p>
+                Filter digunakan untuk mengembalikan subset dari tabel atau ekspresi. Dalam laporan Power BI, filter dapat diterapkan pada keseluruhan laporan, halaman tertentu, atau visual tertentu. 
+                Berikut syntax dari tool Filter:
+            </p>
+            <p style="color: #4471C4; font-size: larger;"><b>Filter(&lt;table&gt;,&lt;filter&gt;)</b></p>
+
+            <li><b>ALL</b></li>
+            <p>
+                Tool related berguna untuk membantu mengembalikan nilai terkait dari tabel lain. 
+                Tool related digunakan untuk mengembalikan subset atau menghapus filter apa pun pada tabel atau kolom.
+            </p>
+            <p style="color: #4471C4; font-size: larger;"><b>RELATED(&lt;column&gt;</b></p>
+
+            <li><b>TOTALYTD/TOTALQTD/TOTALMTD</b></li>
+            <p>
+                Tool ini merupakan jenis tool data analysis expressions untuk memanipulasi data menggunakan periode waktu. 
+                Periode waktu dapat berupa hari, bulan, kuartal, dan tahun.
+            </p>
+            <p style="color: #4471C4; font-size: larger;"><b>TOTALYTD(&lt;expression&gt;,&lt;dates&gt;[,&lt;&gt;filter&gt;][,&lt;year_end_date&gt;])</b></p>
+
+            <li><b>CALCULATE</b></li>
+            <p>
+                Tool CALCULATE digunakan untuk mengevaluasi ekspresi dalam konteks yang dimodifikasi oleh filter tertentu. 
+                Tool ini dapat membuat semua tabulasi sekaligus untuk  menyelesaikan beberapa perhitungan.
+            </p>
+            <p style="color: #4471C4; font-size: larger;"><b>CALCULATE(&lt;expression&gt;,&lt;filter1&gt;,&lt;filter2&gt;...)</b></p>
+        </ol>
+        
+        <!-- Point 5 -->
+        <h1 id="membangun-measure-menggunakan-dax">Membangun Measure Menggunakan DAX</h1>
+        <p>
+            Sebelum memulai implementasi DAX pada Power BI, unduh  <a href="https://docs.google.com/spreadsheets/d/1tiSLThnupUpD9ydyuW-W7A0HpcgbMpX5/edit?usp=drive_link" target="_blank" style="color: blue;">data source Superstore</a> terlebih dahulu. 
+            Data Superstore merupakan salah satu open dataset memuat informasi tentang penjualan dan keuntungan Superstore.
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/1rgz1rLGpXzVSSsvHwcWH8qtfQjkf8To6/preview" width="100%" height="300px" frame-border="0" alt="Data Source Superstore"></iframe>
+
+        <p>
+            Untuk menghubungkan dataset yang telah diunduh sebelumnya ke dalam Power BI dapat menggunakan langkah-langkah seperti berikut:
+        </p>
+        <ol type="1">
+            <li>Buka program Power BI Desktop yang telah terinstal.</li>
+            <li>Pada program yang terbuka pilih “Excel workbook” di bagian “Select a data source or start with a blank report”, karena akan digunakan format file Excel untuk dataset seperti ilustrasi di bawah ini.</li>
+            <iframe src="https://drive.google.com/file/d/1lpNLLk9GN8doQEWWdp3FroULgJL4PDCQ/preview" width="100%" height="300px" frame-border="0" alt="Excel Workbook"></iframe>
+
+            <li>Setelah memilih tautan "Microsoft Excel", jendela "Open" akan terbuka, pilih lembar kerja/file yang sesuai untuk digunakan dalam Power BI seperti ilustrasi berikut ini.</li>
+            <iframe src="https://drive.google.com/file/d/18OVNJlZiF8DfLNZpf6r9S2it_Ca_vUAC/preview" width="100%" height="300px" frame-border="0" alt="Open Window"></iframe>
+
+            <li>Setelah file terhubung pada Power BI, akan muncul Window Navigator seperti ilustrasi di bawah untuk memilih dataset yang akan digunakan.</li>
+            <iframe src="https://drive.google.com/file/d/1Lia-FuDOujeDCA-rhwVFGrTSWTNR7KNP/preview" width="100%" height="300px" frame-border="0" alt="Window Navigator"></iframe>
+
+            <li>Pilih dataset yang akan digunakan pada window Navigator, lalu pilih “Load”, dan akan muncul Window Processing Queries yang menampilkan status transformasi dan menghubungkan data seperti ilustrasi di bawah ini.</li>
+            <iframe src="https://drive.google.com/file/d/179bu7I-npm--Er7MWBIRssYMErvDSJbO/preview" width="100%" height="300px" frame-border="0" alt="Load"></iframe>
+        </ol>
+
+        <p>
+            Pada course ini dicontohkan untuk membangun rata-rata penjualan (Sales) dari tabel orders. Untuk membangun measure menggunakan DAX dari dataset yang telah diunduh sebelumnya ke dalam Power BI dapat menggunakan langkah-langkah berikut:
+        </p>
+        <ol type="1">
+            <li>Pilih <b>“New measure”</b> pada panel <b>“Home”</b>.</li>
+            <iframe src="https://drive.google.com/file/d/1fs0stN0couf1ep3gLF0RHuhS96YsvEyd/preview" width="100%" height="300px" frame-border="0" alt="New Measure"></iframe>
+
+            <li>Pada panel <b>“Measure tools”</b> yang terbuka ketikkan.</li>
+            <p style="color: #4471C4; font-size: larger;"><b>"Average Sales=AVERAGE(Order[Sales])"</b></p>
+            <p>Kemudian pilih ikon centang seperti pada ilustrasi di bawah.</p>
+            <iframe src="https://drive.google.com/file/d/1dvorexN5BkWpcgmwts8NEPuSt-L68XAC/preview" width="100%" height="300px" frame-border="0" alt="Measure Tools"></iframe>
+
+            <li>Measure atau ukuran baru yang terbentuk akan tampil di sisi kanan tableau pada panel “Data” seperti pada ilustrasi di bawah.</li>
+            <iframe src="https://drive.google.com/file/d/1xndPkewaaRJenRHY7uFHhSA3bUlrZSJk/preview" width="100%" height="300px" frame-border="0" alt="Data Average Sales"></iframe>
+
+            <li>Untuk memastikan apakah measure sudah sesuai akan dicontohkan untuk membangun tabel antara “Average Sales” dengan “Category”. Lakukan drag-and-drop “Average Sales” dan “Category” pada panel “Values” seperti ilustrasi di bawah.</li>
+            <iframe src="https://drive.google.com/file/d/1SWp4KkrFSzNXBviimcDImjfxwVheRakE/preview" width="100%" height="300px" frame-border="0" alt="Data Drag and Drop"></iframe>
+
+            <li>Kemudian akan terbentuk tabel seperti ilustrasi di bawah.</li>
+            <iframe src="https://drive.google.com/file/d/1nti3qrFDaAaYd4mmMDVF7fTLhglYEoT3/preview" width="100%" height="300px" frame-border="0" alt="Tabel Average Sales"></iframe>
+        </ol>
+
+        <p>
+            Berikut adalah video langkah-langkah praktik keseluruhan membuat measure menggunakan Data Analysis Expression (DAX) pada Power BI.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1vRBIFxVh9wIQf34Obecs1yyJ4RW_4VUS/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    
+    <!-- Point 6 -->
+    <h1 id="membangun-kalkulasi-kolom-menggunakan-dax">Membangun Kalkulasi Kolom Menggunakan DAX</h1>
+    <p>
+        Pada course ini akan dicontohkan untuk membangun kalkulasi kolom menggunakan DAX dari dataset yang telah diunduh sebelumnya. 
+        Berikut adalah  langkah-langkah membangun kalkulasi kolom:
+    </p>
+    <ol type="1">
+        <li>Pilih <b>Tabel View</b> pada sisi kiri Power BI seperti ilustrasi di bawah, tampilan Power BI akan berubah menampilkan data yang kita gunakan.</li>
+        <iframe src="https://drive.google.com/file/d/1VWKyUiEr9W-I1I1rJQQflXuc5fpMnmXu/preview" width="100%" height="300px" frame-border="0" alt="Tabel View"></iframe>
+
+        <li>Pilih <b>“New columns”</b> pada panel <b>“Tabel tools”</b> yang terbuka seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1de-iPRI5Cl-mVNGpPZsCUOmOJkT0Tjn_/preview" width="100%" height="300px" frame-border="0" alt="Tabel Tools"></iframe>
+
+        <li>Pada panel yang terbuka ketikkan</li>
+        <p style="color: #4471C4; font-size: larger;">
+            <b>CustomerType = VAR TotalSales = SUMX(Orders, [Sales]*[Quantity]) RETURN IF (TotalSales > 2000, "Gold", "Silver")</b>
+        </p>
+        <p>
+            Formula di atas akan memunculkan kolom bernama CustomerType dengan input apabila TotalSales lebih dari 2000 akan memiliki nilai Gold dan Silver untuk lainnya. TotalSales didapatkan dari perkalian Sales dan Quantity dari tabel order. 
+            Perintah VAR digunakan untuk membangun variabel baru agar dapat digunakan pada kalkulasi selanjutnya.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1SCyUxJSSlAv3e7Rfe33QIuhVn9giQNGK/preview" width="100%" height="300px" frame-border="0" alt="Panel Customer Type"></iframe>
+
+        <p>
+            Ketik <b>ENTER</b> pada keyboard lalu akan muncul kolom <b>CustomerType</b> pada data seperti ilustrasi di bawah.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1bFRw9T7-VqyX1iPpqQZkZlI4knTqTuQb/preview" width="100%" height="300px" frame-border="0" alt="Customer Type Column"></iframe>
+    </ol>
+
+    <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan membuat kalkulasi kolom menggunakan Data Analysis Expression (DAX) pada Power BI.
+    </p>
+    <iframe src="https://drive.google.com/file/d/1cdyw8bgz9Gl5G-xuii7bq8mBs-YJ3mw_/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    
+    <!-- Point 7 -->
+    <h1 id="membangun-tabel-kalkulasi-menggunakan-dax">Membangun Tabel Kalkulasi Menggunakan DAX</h1>
+    <p>
+        Pada course ini akan dicontohkan untuk membangun tabel kalkulasi menggunakan DAX dari dataset yang telah diunduh sebelumnya. Berikut adalah langkah-langkah membangun tabel kalkulasi:
+    </p>
+    <ol type="1">
+        <li>Pilih <b>Tabel View</b> pada sisi kiri tableau seperti ilustrasi di bawah, tampilan Power BI akan berubah menampilkan data yang kita gunakan.</li>
+        <iframe src="https://drive.google.com/file/d/1VWKyUiEr9W-I1I1rJQQflXuc5fpMnmXu/preview" width="100%" height="300px" frame-border="0" alt="Tabel View"></iframe>
+
+        <li>Pilih <b>“New table”</b> pada panel <b>“Tabel tools”</b> yang terbuka seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1-6PtmkB1kJ4lO3Xubjv0MpjqUOix4wf7/preview" width="100%" height="300px" frame-border="0" alt="Tabel Tools"></iframe>
+
+        <li>Pada panel yang terbuka ketikkan.</li>
+        <p style="color: #4471C4; font-size: larger;">
+            <b>SuperStore Newell= FILTER (Orders, Orders[Product Name] = “Newell 317”)</b>
+        </p>
+        <p>
+            Formula di atas akan memunculkan tabel bernama “SuperStore Newell” yang berisikan data Orders yang hanya mempunyai nilai “Newell 317” pada kolom “Product Name”.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1gpiBzL9m9xOMTqeVgJCNfGS-q-x3_H95/preview" width="100%" height="300px" frame-border="0" alt="SuperStore Newell"></iframe>
+        <p>Ketik <b>ENTER</b> pada keyboard lalu akan muncul tabel Superstore Newell pada data.</p>
+    </ol>
+
+    <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan membuat tabel kalkulasi menggunakan Data Analysis Expression (DAX) pada Power BI.
+    </p>
+    <iframe src="https://drive.google.com/file/d/14lBI79a1erILWcuC0eBePcToOYDKKYcM/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+</div>

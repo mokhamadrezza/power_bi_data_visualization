@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membangun Data Driven Story dengan Power BI Reports</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="Judul">Membangun Data Driven Story dengan Power BI Reports</h1>
+        </div>
+<style>
+    
+body{
+    background-color: #fff;
+}
+
+.container{
+    background-color: #fff;
+    padding-top: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 3%;
+}
+
+.container .header{
+    color: black;
+}
+
+.Judul{
+    font-size: 2.6vw;
+    text-align: left;
+    font-weight: bolder;
+    margin: 1%;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.content-box{
+    max-width: 90vw;
+    min-width: 30%;
+    border: 0.1vw solid #4471C4;
+    background-color: #fff;
+    box-shadow: 0.4vw 0.4vw 1.5vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.2vw;
+    margin: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    text-align: justify;
+}
+
+.content-box h2{
+    font-size: x-large;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: inline-flex;
+    align-content: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    max-width: 90vw;
+}
+
+.content-box ul{
+    list-style-type: disc;
+    padding-left: 2.5%;
+    margin-left: 1%;
+    font-size: 16px;
+    line-height: 2.5;
+    max-width: 90vw;
+}
+
+.content-box ul li{
+    max-width: 90vw;
+}
+
+.top-box{
+    margin-bottom: 0.5%;
+    max-width: 90vw;
+}
+
+.no-bullets{
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 90vw;
+}
+
+.no-bullets ul{
+    padding-left: 3%; /* Menambahkan indentasi untuk daftar bersarang */
+    max-width: 90vw;
+}
+
+.note-box{
+    display: flex;
+    max-width: 90vw;
+    height: auto;
+    padding: 1%;
+    border-radius: 1vw;
+    border: 0.1vw solid #000;
+    background-color: #CFE1F3; /* Warna latar belakang seperti catatan */
+    box-shadow: 0.3vw 0.3vw 1vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    position: relative;
+}
+
+.note-box span {
+    margin-top: 0%;
+    font-size: 1.6vw;
+    font-family: calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+    font-weight: bolder;
+}
+
+.note-box h2{
+    margin-top: 0;
+    max-width: fit-content;
+    font-size: 30px;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+
+.note-box p{
+    margin: 0;
+    max-width: 90vw;
+    font-size: 1.4vw;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+/* Style for h1 */
+h1{
+    font-size: 1.6vw; /* Ukuran font 20 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    color: #1f2855;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for h2 */
+h2{
+    font-size: 1.8vw; /* Ukuran font 18 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/*Style for h3 */
+h3 {
+    font-size: 1.6vw;
+    font-weight: bolder;
+    font-family: calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /*Jarak spasi 1/5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for p */
+p{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+/* Style for ul and ol */
+ul, ol{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for li */
+li{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+
+.small-text{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.large-text {
+    line-height: 1.5; /* Jarak Spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    vertical-align: top;
+}
+
+.Tools{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.Tipe{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 0%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.pic {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    height: auto;
+}
+
+iframe{
+    max-width: 75%;
+    min-height: auto;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 0.1vw solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-size: 1.2vw;
+}
+th {
+    background-color: #2796a3; /* Warna Latar Belakang untuk Baris Pertama */
+    color: white;
+    text-align: center;
+    font-size: 1.2vw;
+}
+tr:hover {
+    background-color: beige;
+}
+
+font {
+    max-width: 100%;
+}
+
+.kotak {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 1.5vw;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #2796a3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<div class="content-box"> <!-- Berisi Poin-poin Konten-->
+    <h2>
+        <img src="https://drive.google.com/thumbnail?id=1OSwy6Vn5jv8ERj5uV-d5abA8LFGNXV9x" alt="Content Image" style="vertical-align: middle; margin-right: 10px; max-width: 40px; max-height: 40px; padding-top: 10px;">Content
+    </h2>
+    <ul class="no-bullets" style="color: blue;">
+        <li><a href="#definisi-data-driven-storytelling" target="_blank" style="color: blue;">Definisi Data Driven Storytelling</a></li>
+        <li><a href="#mendesain-detail-laporan-dalam-data-driven-storytelling" target="_blank" style="color: blue;">Mendesain Detail Laporan dalam Data Driven Storytelling</a></li>
+        <li><a href="#merancang-laporan-untuk-menyoroti-nilai" target="_blank" style="color: blue;">Merancang Laporan Untuk Menyoroti Nilai</a></li>
+        <li><a href="#standar-report-accessibility-pada-power-bi" target="_blank" style="color: blue;">Standar Report Accessibility pada Power BI</a></li>
+        <li><a href="#membangun-report-dengan-power-bi" target="_blank" style="color: blue;">Membangun Report dengan Power BI</a></li>    
+    </ul>
+    
+</div>
+
+<div class="content-box">
+    <!--Point 1-->
+    <h1 id="definisi-data-driven-storytelling">Definisi Data Driven Storytelling</h2>
+    <p>
+        Data Driven Storytelling merupakan pendekatan terstruktur untuk mengomunikasikan wawasan data melalui visualisasi data, infografis, dasbor, dan elemen visual lainnya. 
+        Kemampuan untuk mengubah data mentah menjadi cerita sederhana yang mudah dibaca dan dipahami sehingga membantu audiens mengubah wawasan menjadi tindakan adalah Data Driven Storytelling. 
+        Data Storytelling yang baik dibentuk oleh tiga komponen:
+    </p>
+    <ol type="1">
+        <li><b>Data analysis</b>: digunakan untuk mendapatkan insight yang berharga, dan untuk mencapai hal tersebut diperlukan data yang akurat dan terkini.</li>
+        <li><b>Data visualization</b>: digunakan untuk membantu menemukan dan menyelidiki pola dan trend yang mungkin terlewatkan dan lebih jauh lagi. Data visualization juga berfungsi untuk menyampaikan makna data dengan cara yang dapat dimengerti, mudah diingat, dan menarik.</li>
+        <li><b>Narrative</b>: digunakan untuk mendukung visualisasi dan wawasan dengan cara yang paling sederhana.</li>
+    </ol>
+
+    <!-- Point 2 -->
+     <h1 id="mendesain-detail-laporan-dalam-data-driven-storytelling">Mendesain Detail Laporan dalam Data Driven Storytelling</h1>
+     <p>
+        Sebuah report analisis harus didesain untuk memberikan insight sehingga dapat bercerita secara otomatis dan tidak disadari oleh audiens ketika melihatnya. Laporan analisis yang bersifat naratif memberikan insight dan membantu komunikasi wawasan secara lebih efektif.
+     </p>
+     <iframe src="https://drive.google.com/file/d/1qECs_zqTC2gCucUQ0zI7Fo4wyYxB8Ik7/preview" width="100%" height="300px" frame-border="0" alt="Ilustrasi Laporan Analisis"></iframe>
+     <p>
+        Sebuah report analisis pada Power BI dapat digunakan untuk bercerita berdasarkan data (data driven storytelling). Terdapat beberapa cara yang digunakan untuk memberikan insight pada audiens, salah satunya yaitu dengan menggunakan detail. 
+        Dalam power BI terdapat empat teknik yang dapat digunakan untuk menampilkan detail report:
+     </p>
+     <ol type="1">
+        <li><b>Menggunakan Drillable Visual</b></li>
+        <p>
+            Drillable visuals dalam Power BI adalah fitur yang memungkinkan pengguna untuk mengeksplorasi data secara lebih detail dengan melakukan penelusuran atau drill-down pada visualisasi data.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1nzhNUnqybU-Ulsbpu4VPIFlD7kdR5N0m/preview" width="100%" height="300px" frame-border="0" alt="Drillable Visual"></iframe>
+        <p>
+            Fitur ini memungkinkan pengguna untuk berinteraksi dengan visualisasi data dan mengeksplorasi data dengan lebih mudah dan cepat. Dengan menetapkan hierarki atau beberapa bidang, audiens report dapat menelusuri ke tingkat detail yang diinginkan. 
+            Ilustrasi di atas merupakan contoh drillable visual dalam report Power BI.
+        </p>
+        <p>
+            Dengan menggunakan drillable visuals, pengguna dapat memperoleh wawasan yang lebih dalam dan lebih spesifik tentang data yang ditampilkan dalam report Power BI.
+        </p>
+
+        <li><b>Menambahkan Tooltips</b></li>
+        <p>
+            Dalam membangun visualisasi, tidak semua detail dapat ditampilkan dalam grafik. Untuk menampilkan detail dalam grafik sering digunakan tooltips. Tooltips adalah fitur yang memungkinkan pengguna untuk memberikan detail atau metrik pendukung pada elemen objek report di Power BI.
+        </p>
+        <iframe src="https://drive.google.com/file/d/129oDBSPJLdxm7eDrCjgzDj_YUMOpPeCk/preview" width="100%" height="300px" frame-border="0" alt="Tooltips"></iframe>
+        <p>
+            Tooltips muncul saat pengguna mengarahkan kursor ke elemen objek report, seperti kolom pada bagan kolom atau gelembung atau wilayah pada peta. Dengan menambahkan tooltips, pengguna dapat memberikan konteks dan informasi yang lebih detail pada visualisasi data, sehingga memudahkan pengguna untuk memahami data yang ditampilkan dalam report Power BI. 
+            Dalam Laporan Power BI mendukung dua jenis tooltip:
+        </p>
+        <ol type="a">
+            <li><b>Visual Tooltips</b></li>
+            <p>
+                Visual tooltips pada Power BI adalah fitur yang memungkinkan pengguna untuk menambahkan informasi tambahan atau detail yang terkait dengan elemen visual tertentu dalam laporan.
+            </p>
+            <iframe src="https://drive.google.com/file/d/1SfkII5Q8ZbmP-anj6_M6pdpJLa6y5uLA/preview" width="100%" height="300px" frame-border="0" alt="Visual Tooltips"></iframe>
+            <p>
+                Visual tooltips memungkinkan pengguna untuk menambahkan informasi tambahan pada elemen visualisasi data dengan menampilkan visualisasi data yang lebih detail saat pengguna mengarahkan kursor ke elemen tersebut. 
+                Visual tooltips dapat disesuaikan dengan menyesuaikan pengaturan di panel Format.
+            </p>
+            <p class="kotak" style="color: #fff;">
+                Sebagai contoh: Pada ilustrasi di atas visual bagan kolom yang memperlihatkan pendapatan penjualan per bulan dapat menyertakan jumlah pesanan sebagai keterangan alat. 
+                Meskipun panjang kolom menunjukkan jumlah pendapatan bulanan, saat konsumen report mengarahkan kursor ke kolom, tooltips menjelaskan jumlah pesanan untuk bulan tersebut 
+            </p>
+
+            <li><b>Page Tooltips</b></li>
+            <p>
+                Page Tooltips adalah fitur yang memungkinkan pengguna untuk menambahkan informasi tambahan atau detail pada halaman tertentu ketika pengguna mengarahkan kursor mouse ke elemen visual tertentu di laporan.
+            </p>
+            <iframe src="https://drive.google.com/file/d/1cXG03DYCQFi4y5BYaJ-W_Y-Ek3iKDOl1/preview" width="100%" height="300px" frame-border="0" alt="Page Tooltips"></iframe>
+            <p>
+                Page tooltips memungkinkan pengguna untuk membuat halaman tooltip report yang kaya dengan menampilkan visualisasi data yang lebih detail saat pengguna mengarahkan kursor ke elemen objek report. 
+                Halaman tooltip dapat disesuaikan dengan menambahkan visualisasi data yang diinginkan dan mengatur tampilan halaman tooltip.
+            </p>
+            <p class="kotak" style="color: #fff;">
+                Sebagai contoh: Pada ilustrasi di atas, saat konsumen mengarahkan kursor ke kolom report, tooltips menjelaskan jumlah pesanan untuk produk tersebut yang mengarah pada halaman tertentu.
+            </p>
+
+            <li><b>Menambahkan Drill Through</b></li>
+            <p>
+                Drill Through dalam Power BI adalah fitur yang memungkinkan pengguna untuk menelusuri data secara lebih detail dengan mengklik elemen visualisasi data dan membuka halaman baru yang menampilkan data yang lebih spesifik.
+            </p>
+            <iframe src="https://drive.google.com/file/d/1C2pwjppod5kPAY1n5hWp4M_1Ej2mLgdx/preview" width="100%" height="300px" frame-border="0" alt="Drill Through"></iframe>
+            <p>
+                Dalam drillthrough, pengguna dapat mengklik elemen visualisasi data, seperti kolom pada bagian kolom atau gelembung atau wilayah pada peta, dan membuka halaman baru yang menampilkan data yang lebih spesifik. 
+                Alur umum menggunakan drillthrough dalam power BI adalah sebagai berikut:
+            </p>
+            <ol type="a">
+                <li>Lihat ke dalam halaman report (report page).</li>
+                <li>Identifikasi elemen visual untuk menganalisis lebih dalam.</li>
+                <li>Klik kanan pada elemen visual untuk menggunakan drillthrough.</li>
+                <li>Lakukan complimentary analysis.</li>
+                <li>Kembali ke halaman report sumber.</li>
+            </ol>
+
+            <li><b>Menyematkan Report Berhalaman</b></li>
+            <p>
+                Menyematkan report berhalaman berguna ketika pengguna ingin memberikan informasi kontekstual, penjelasan, atau detail tambahan kepada pengguna lain tanpa membuat report terlalu padat.
+            </p>
+            <iframe src="https://drive.google.com/file/d/1vhcT3G_pqtUl7XCRF0HuJP6wJkPtmcbX/preview" width="100%" height="300px" frame-border="0" alt="Paginated Report"></iframe>
+            <p>
+                Untuk mengintegrasikan atau menyematkan report berhalaman Power BI ke dalam aplikasi analitik yang disematkan, pengguna dapat menggunakan fitur “Paginated Report”. 
+                Fitur ini memungkinkan pengguna untuk menyematkan report paginasi Power BI ke dalam aplikasi analitik.
+            </p>
+        </ol>
+     </ol>
+    
+    <!-- Point 3 -->
+    <h1 id="merancang-laporan-untuk-menyoroti-nilai">Merancang Laporan untuk Menyoroti Nilai</h1>
+    <p>
+        Merancang report untuk menonjolkan nilai-nilai berarti membuat tata letak dan visualisasi yang memungkinkan informasi penting atau nilai-nilai utama dalam data menjadi lebih terlihat dan mudah dimengerti oleh pembaca report.
+    </p>
+    <iframe src="https://drive.google.com/file/d/1NLGxcTy8ZXsfYjop-PDdAhQr8vPTkM14/preview" width="100%" height="300px" frame-border="0" alt="Graphic Report"></iframe>
+    <p>
+        Dengan merancang report dengan baik untuk menonjolkan nilai-nilai, pengguna dapat meningkatkan kemampuan pembaca dalam memahami dan mengambil keputusan berdasarkan informasi yang disajikan dalam report tersebut. 
+        Power BI mendukung beberapa teknik untuk menyorot nilai:
+    </p>
+    <ol type="1">
+        <li><b>Conditional Formatting</b></li>
+        <p>
+            Untuk menyoroti nilai-nilai tertentu dalam report Power BI, pengguna dapat menggunakan pemformatan bersyarat. Dengan conditional formatting pengguna bisa menerapkan aturan untuk menyorot sel tertentu dengan menggunakan:
+        </p>
+        <ol type="a">
+            <li>Warna latar belakang</li>
+            <li>Warna font</li>
+            <li>Data bars</li>
+            <li>Ikon</li>
+        </ol>
+        <iframe src="https://drive.google.com/file/d/1On3Wz5m4Dh2-UEEcGgec6jUq4akbmiDg/preview" width="100%" height="300px" frame-border="0" alt="Conditional Formatting"></iframe>
+        <p>
+            Gambar di atas menunjukkan contoh conditional formatting visual dengan ikon. Ikon menyoroti nilai On hand.
+        </p>
+
+        <li><b>Overlaid Analytics</b></li>
+        <p>
+            Overlaid analytics memungkinkan pengguna untuk menampilkan data tambahan pada visualisasi, seperti nilai rata-rata atau persentase, untuk membantu menyoroti informasi penting dalam report.
+        </p>
+        <p>
+            Pengguna dapat menambahkan overlaid analytics pada visualisasi di Power BI Desktop atau layanan Power BI. Fitur ini dapat membantu pengguna untuk menemukan pola dan tren dalam data, serta membuat keputusan bisnis yang lebih baik.
+        </p>
+        <iframe src="https://drive.google.com/file/d/12CS6AYAfRlbEs_yUu19McgNUMvdFA6S5/preview" width="100%" height="300px" frame-border="0" alt="Overlaid Analytics"></iframe>
+        <p>
+            Gambar di atas adalah contoh garis trend yang merupakan salah satu contoh Overlaid Analytics. Gradien ke atas dari garis trend dengan jelas menunjukkan bahwa nilai returns meningkat seiring waktu.
+        </p>
+
+        <li><b>Anomaly Detection</b></li>
+        <p>
+            Anomaly detection adalah fitur pada Power BI yang dapat membantu pengguna untuk menyoroti nilai yang tidak biasa atau anomali pada data. Fitur ini dapat membantu pengguna untuk menemukan pola dan trend dalam data, serta membuat keputusan bisnis yang lebih baik.
+        </p>
+        <p>
+            Jika data time series (bidang tanggal) berada pada sumbu X, tersedia dua opsi analitik tambahan. Opsi ini menggunakan AI untuk menghasilkan perkiraan atau menemukan anomali.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1sg33YtwH7rliks_IwzjyViXJC9GR6jKy/preview" width="100%" height="300px" frame-border="0" alt="Anomaly Detection"></iframe>
+        <p>
+            Ilustrasi di atas menunjukkan visual diagram garis. Power BI mendeteksi anomali pada tanggal tertentu dan menandainya dengan bentuk tertentu. Saat audiens report mengarahkan kursor ke bentuk, keterangan alat akan muncul yang menjelaskan nilai yang diharapkan (expected value).
+        </p>
+
+        <li><b>Specialized Visuals</b></li>
+        <p>
+            Specialized visuals pada Power BI adalah visualisasi data yang dibuat oleh pengguna atau pihak ketiga untuk memenuhi kebutuhan bisnis yang spesifik. 
+            Visualisasi ini dapat membantu pengguna untuk menyoroti nilai tertentu pada data dengan cara yang lebih spesifik dan sesuai dengan kebutuhan bisnis. Beberapa contoh specialized visuals pada Power BI adalah:
+        </p>
+        <ol type="a">
+            <li><b>Key Influencers visual</b></li>
+            <p>
+                Key influencers visual merupakan visualisasi yang membantu pengguna untuk memahami faktor-faktor yang mempengaruhi suatu metrik yang diminati. Visualisasi ini menggunakan algoritma machine learning untuk menganalisis data dan menentukan faktor-faktor yang paling berpengaruh pada metrik tersebut.
+            </p>
+            <iframe src="https://drive.google.com/file/d/1xJVFrrsIOIdJE_QFylH0xeUbDCXyxJZ9/preview" width="100%" height="300px" frame-border="0" alt="Key Influencers"></iframe>
+            
+            <li><b>Decomposition Tree visual</b></li>
+            <p>
+                Decomposition tree visual adalah visualisasi yang memungkinkan pengguna untuk memvisualisasikan data melintasi beberapa dimensi. Visualisasi ini secara otomatis mengagregasi data dan memungkinkan pengguna untuk mengeksplorasi data secara ad hoc dan melakukan analisis penyebab akar.
+            </p>
+            <iframe src="https://drive.google.com/file/d/1Mb6dIbOZyFjOVg-48VstxAXpMK9QXM1-/preview" width="100%" height="300px" frame-border="0" alt="Decomposition Tree"></iframe>
+        </ol>
+    </ol>
+
+    <!-- Point 4 -->
+     <h1 id="standar-report-accessibility-pada-power-bi">Standar Report Accessibility pada Power BI</h1>
+     <p>
+        Dalam membangun report pada Power BI, perlu memperhatikan beberapa standar yang berlaku. Power BI berkomitmen terhadap standar aksesibilitas berdasarkan Pedoman Aksesibilitas Konten Web (WCAG).
+     </p>
+     <p>
+        Standar ini membantu memastikan bahwa pengalaman Power BI dapat diakses oleh sebanyak mungkin orang. Ketika pengguna membuat report atau dasbor yang dapat diakses, konten tersebut dapat diakses oleh siapa saja yang melihatnya menggunakan Power BI Mobile. 
+        Pedoman Aksesibilitas Konten Web (WCAG) membantu membuat konten web dapat diakses oleh penyandang disabilitas. Prinsip-prinsip utama dari pedoman ini meliputi hal-hal berikut:
+     </p>
+     <ol type="1">
+        <li>Perceivable: komponen informasi dan antarmuka pengguna harus dapat ditampilkan kepada pengguna dengan cara yang dapat mereka pahami.</li>
+        <li>Operable: komponen antarmuka pengguna dan navigasi harus dapat dioperasikan.</li>
+        <li>Understandable: informasi dan pengoperasian antarmuka pengguna harus dapat dimengerti.</li>
+     </ol>
+
+    <!-- Point 5 -->
+     <h1 id="membangun-report-dengan-power-bi">Membangun Report pada Power BI</h1>
+     <p>
+        Sebelum memulai visualisasi data, unduh file Power BI berisi data IT Spend yang akan digunakan di course ini. Data IT Spend merupakan data yang memuat informasi tentang budget, pengeluaran & perkiraan (forecast) perusahaan pada teknologi. 
+        Report yang akan dicontohkan adalah seperti ilustrasi di bawah ini.
+     </p>
+     <iframe src="https://drive.google.com/file/d/1ByejZv9QdFBdHLXyhPTbqsuKpsRnAgPJ/preview" width="100%" height="300px" frame-border="0" alt="Forecast Report"></iframe>
+     <p>
+        Course ini akan mencontohkan membangun report mengenai budget, pengeluaran & perkiraan (forecast) perusahaan pada teknologi. Langkah-langkah yang dapat digunakan untuk membangun Report pada Power BI adalah sebagai berikut:
+     </p>
+     <ol type="1">
+        <li>Buka File Power BI yang telah diunduh sebelumnya, file tersebut telah berisi dataset yang akan digunakan sehingga tidak perlu melakukan import data terlebih dahulu.</li>
+        <li>Pada Power BI terdapat beberapa cara untuk membangun visualisasi, salah satunya yaitu dengan menggunakan AI (Artificial Intelligence). Pada Panel <b>“Insert”</b> pilih menu <b>“Q&A”</b> seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1BKvHYZbokt3pyPgDHyiX6HWOp2wKyERD/preview" width="100%" height="300px" frame-border="0" alt="Insert Q&A"></iframe>
+
+        <li>Akan muncul kotak grafik seperti ilustrasi di bawah, ketikkan <b>“Actual RT as Gauge”</b> untuk membangun visualisasi Gauge Chart dari data pengeluaran aktual.</li>
+        <iframe src="https://drive.google.com/file/d/1NYWwWxyejIhRXIBYyFj3w0iGzbjlntcq/preview" width="100%" height="300px" frame-border="0" alt="Actual RT"></iframe>
+
+        <li>Visualisasi yang terbentuk masih berupa Q&A chart. Untuk membuatnya ke dalam standar visual pilih <iframe src="https://drive.google.com/file/d/1ZYvZAeSaZuUh_zuhcmvxrojw5YqjrotE/preview" width="20px" height="20px" style="vertical-align: middle;" frame-border="0" alt="Icon Visual"></iframe> seperti pada ilustrasi di bawah.</li>
+        <li>Tampilan chart akan berubah seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1s5vc4hE5TCHy1n5Ps0VzBqGswt_JjMKv/preview" width="100%" height="300px" frame-border="0" alt="Actual RT"></iframe>
+
+        <li>Untuk mengganti judul pada visualisasi yang terbentuk, pada panel <b>“Visualization”</b> pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Visual"></iframe>, lalu pilih <b>“Title”</b> pada <b>“General”</b></li>
+        <li>Ketikkan <b>“Actual YTD”</b> pada kolom <b>Text</b> yang terdapat pada <b>Title</b> seperti pada ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1_kDvsJP1UQHFHxu4iDiyaTC_ghru74t1/preview" width="100%" height="300px" frame-border="0" alt="Visualizations"></iframe>
+
+        <li>Tampilan judul dari grafik Gauge yang terbentuk akan berubah seperti ilustrasi berikut.</li>
+        <iframe src="https://drive.google.com/file/d/1bT_UZwVoBgRcRu36IFQNpwirwJUvW46r/preview" width="100%" height="300px" frame-border="0" alt="Actual YTD"></iframe>
+
+        <li>Atur posisi grafik visualisasi seperti contoh sebelumnya.</li>
+        <li>Selanjutnya akan dibuat grafik Key Performance Indicator (KPI), pada panel <b>“Visualization”</b> pilih ikon <iframe src="https://drive.google.com/file/d/1e6me0JmqgDoQtScYZPxaDA5R0H5m-DbD/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon KPI Visualizations"></iframe> seperti ilustrasi di bawah</li>
+        <iframe src="https://drive.google.com/file/d/1Ys1fPK7N-SEs7VINF7QVzgu1uVbTqkKO/preview" width="100%" height="300px" frame-border="0" alt="KPI Visualizations"></iframe>
+
+        <li>Drag-and-drop <b>“Date”</b> pada tabel <b>“Calendar”</b> menuju <b>“Trend Axis”</b>, <b>“Forecast”</b> pada tabel <b>“Forecast”</b> menuju <b>“Indicator”</b>, dan <b>“Budget”</b> pada tabel <b>“Budget”</b> menuju <b>“Target”</b> pada panel <b>“Visualization”</b> seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1zm5iXOwXUCD6pCA5scf1wExTvOvZ_o3v/preview" width="100%" height="300px" frame-border="0" alt="Drag & Drop"></iframe>
+        
+        <li>Akan terbentuk grafik KPI seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1fMfs5UNPGPKk6U6BPprbDQ3lVP_ZlRDd/preview" width="100%" height="300px" frame-border="0" alt="KPI Graphic"></iframe>
+
+        <li>Grafik KPI yang terbentuk sebelum nya berisi informasi bahwa hasil forecast yang lebih tinggi dari budget menunjukkan kondisi baik. Untuk mengubah ke dalam kondisi seharusnya (Forecast > Budget menunjukkan kondisi kurang baik). Pada panel <b>“Visualization”</b> pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Visualizations"></iframe>.</li>
+        <li>Pilih <b>“Trend axis”</b> pada panel <b>“Visualization”</b>, lalu pilih <b>“Low is Good”</b> pada kolom <b>“Direction”</b> seperti pada ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1_TQzzCFIIuVYR8eZrE3S-DLFBIZIDuOY/preview" width="100%" height="300px" frame-border="0" alt="KPI Graphic"></iframe>
+
+        <li>Tampilan dari grafik KPI yang terbentuk akan berubah seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1mm6-yCNJtdmX0TPl9T0tNGhEaRUXkkNX/preview" width="100%" height="300px" frame-border="0" alt="KPI Graphic"></iframe>
+
+        <li>Pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Visualizations"></iframe> pada panel <b>“Visualizations”</b>, pilih <b>“Target label”</b> lalu <b>“Decreasing is positive”</b> pada <b>“Distance direction”</b>, untuk mengubah notasi presentasi perbedaan antara forecast & budget seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1qmzNBEmPbx9LhtLIk_c_XzyqniJfo3Bz/preview" width="100%" height="300px" frame-border="0" alt="KPI Graphic"></iframe>
+
+        <li>Tampilan dari grafik KPI yang terbentuk akan berubah seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1mm6-yCNJtdmX0TPl9T0tNGhEaRUXkkNX/preview" width="100%" height="300px" frame-border="0" alt="KPI Graphic"></iframe>
+
+        <li>Atur posisi grafik visualisasi seperti contoh sebelumnya.</li>
+        <li>Selanjutnya akan dibuat grafik menunjukkan hasil aktual, forecast dan budget, pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Graphic"></iframe> pada panel “Visualizations” seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1iLNYxpdpbRoTZA1VGM0Wk21wkQwwUwfh/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+
+        <li>Lakukan drag-and-drop <b>“Date”</b> pada tabel <b>“Calendar”</b> menuju <b>“X-axis”</b>,  <b>“Forecast”</b> pada tabel <b>“Forecast”</b> menuju <b>“Y-axis”</b>, <b>“Budget”</b> pada tabel <b>“Budget”</b> menuju <b>“Y-axis”</b>, <b>“Actual”</b> pada tabel <b>“Actual”</b> menuju <b>“Y-axis”</b> pada panel <b>“Visualization”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1Xzs3PJIDqr-czhpP_SxtFwzLfWMd3BGg/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+
+        <li>Sesuaikan hierarki dengan memilih ikon <iframe src="https://drive.google.com/file/d/1CwxIvgF1S7gPxhXVyvYp-7770jtqBbW9/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Arrow"></iframe> sehingga line chart dari Forecast, Actual, dan Budget setiap bulannya, seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1ZUcaJk456FC0trbgdbkcbATYKDPTs9MN/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+        
+        <li>Selanjutnya akan dibuat grafik menunjukkan hasil Budget dengan Forecast pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Graphic"></iframe> pada panel “Visualizations” seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1-CVdXeD7CikwVlWCyWYIZts4kJ2JThKG/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+
+        <li>Lakukan drag-and-drop <b>“Date”</b> pada tabel <b>“Calendar”</b> menuju <b>“X-axis”</b>, <b>“Budget v Forecast”</b> pada tabel <b>“Budget”</b> menuju <b>“Column y-axis”</b>, <b>“Budget v Forecast %”</b> pada tabel <b>“Budget”</b> menuju <b>“Line y-axis”</b>, seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1-CVdXeD7CikwVlWCyWYIZts4kJ2JThKG/preview" width="100%" height="300px" frame-border="0" alt="Axis"></iframe>
+
+        <li>Sesuaikan hierarki dengan memilih ikon <iframe src="https://drive.google.com/file/d/1CwxIvgF1S7gPxhXVyvYp-7770jtqBbW9/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Arrow"></iframe> sehingga line chart dari Forecast, Actual, dan Budget setiap bulannya, seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1l3Q1BnMFiG3bWSlgS4eDS-jELx8tZ8LI/preview" width="100%" height="300px" frame-border="0" alt="Forecast"></iframe>
+
+        <li>Selanjutnya akan dibuat grafik menunjukkan barplot “Budget v Forecast” setiap region, pilih ikon <iframe src="https://drive.google.com/file/d/1WQatzrk53aiSeYnBZHJ9o2okK8Wne4v_/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Graphic"></iframe> pada panel <b>“Visualizations”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1xWMQHzaJ56WMxn_rlfFfz4Cwl8rvjpeo/preview" width="100%" height="300px" frame-border="0" alt="Visualizations"></iframe>
+
+        <li>Lakukan Drag-and-drop <b>“Region”</b> pada tabel <b>“Region”</b> menuju <b>“Y-axis”</b>, <b>“Budget v Forecast %”</b> pada tabel <b>“Budget”</b> menuju <b>“X-axis”</b>, seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1xtQSPuYSNsrVFANjo6RVECf8N4UOp17T/preview" width="100%" height="300px" frame-border="0" alt="Axis"></iframe>
+
+        <li>Ilustrasi grafik yang terbentuk akan muncul seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1IIzxwtfGPaH7zx2-ExzbwsdzlEjGf4af/preview" width="100%" height="300px" frame-border="0" alt="Forecast"></iframe>
+
+        <li>Untuk menambahkan label pada setiap bar pada grafik, pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle;" frame-border="0" alt="Icon Visualization"></iframe> pada panel <b>Visualization</b>, Pilih <b>Data labels</b> lalu aktifkan dengan mengklik <b>“Off”</b> ke <b>“On”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/13eVhajVPanvAJk0ZQ-9livfkx5nZ_68Q/preview" width="100%" height="300px" frame-border="0" alt="Data Labels"></iframe>
+
+        <li>Tampilan dari grafik yang terbentuk akan menjadi seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1X3pOvQLQwOo0K4GyME2zbJzzfqoNDspj/preview" width="100%" height="300px" frame-border="0" alt="Data Labels"></iframe>
+
+        <li>Selanjutnya akan dibuat grafik menunjukkan barplot “Budget v Forecast” setiap grup cost element, pilih ikon <iframe src="https://drive.google.com/file/d/1WQatzrk53aiSeYnBZHJ9o2okK8Wne4v_/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Visualization"></iframe> pada panel <b>“Visualizations”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1RcrNABoq3yqJSsYstl2IATNsavZKDPLi/preview" width="100%" height="300px" frame-border="0" alt="Visualizations"></iframe>
+
+        <li>Lakukan Drag-and-drop <b>“Cost Element Group”</b> pada tabel <b>“CostElements”</b> menuju <b>“Y-axis”</b>, <b>“Budget v Forecast %”</b> pada tabel <b>“Budget”</b> menuju <b>“X-axis”</b>, seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1z6WNbfQRJsrcNl2k9ftLEeCob6pftemj/preview" width="100%" height="300px" frame-border="0" alt="Axis"></iframe>
+
+        <li>Ilustrasi grafik yang terbentuk akan muncul seperti ilustrasi berikut.</li>
+        <iframe src="https://drive.google.com/file/d/17ezpZgEhD3Rmf5-OuJ-yIJKHFfRdPseH/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+
+        <li>Untuk menambahkan label pada setiap bar pada grafik, pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Visualization"></iframe> pada panel <b>Visualization</b>, Pilih Data labels lalu aktifkan dengan mengklik <b>“Off”</b> ke <b>“On”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1MDvnhNgvWiN_asi5qLisuGbTh7H2Iyf2/preview" width="100%" height="300px" frame-border="0" alt="Data Labels"></iframe>
+
+        <li>Tampilan dari grafik yang terbentuk akan menjadi seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1RHY-93eexseAG8o82MnKWN9Eu_pTqOJe/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+
+        <li>Selanjutnya akan dibuat grafik menunjukkan barplot “Budget v Forecast” setiap IT area Department, pilih ikon <iframe src="https://drive.google.com/file/d/1WQatzrk53aiSeYnBZHJ9o2okK8Wne4v_/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Graphic"></iframe> pada panel <b>“Visualizations”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1lMC-DLRvF47ZkaS2GzmmZeU3qq3rx40E/preview" width="100%" height="300px" frame-border="0" alt="Visualizations"></iframe>
+
+        <li>Lakukan Drag-and-drop “IT Area” pada tabel <b>“Departments”</b> menuju <b>“Y-axis”</b>, <b>“Budget v Forecast %”</b> pada tabel <b>“Budget”</b> menuju <b>“X-axis”</b>, seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1m0mjDNQPgcFquXPbMVcZaNlh76r79zIN/preview" width="100%" height="300px" frame-border="0" alt="Axis"></iframe>
+
+        <li>Ilustrasi grafik yang terbentuk akan muncul seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1CmNC8OizOFDX8JYuErRse2IPbOBPhTpg/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+
+        <li>Untuk menambahkan label pada setiap bar pada grafik, pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Visualizations"></iframe> pada panel Visualization. Pilih Data labels lalu aktifkan dengan mengklik “Off” ke “On” seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1MDvnhNgvWiN_asi5qLisuGbTh7H2Iyf2/preview" width="100%" height="300px" frame-border="0" alt="Data Labels"></iframe>
+
+        <li>Tampilan dari grafik yang terbentuk akan menjadi seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/12AM7Y8wDH99uYqbuzrYVzLi3hQahW3Ok/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+
+        <li>Untuk menambahkan detail tahun dapat menggunakan card, pilih ikon <iframe src="https://drive.google.com/file/d/1sSp7UElCjByVNzYJII12O-Kg_XCMabhs/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Number"></iframe> pada panel <b>“Visualization”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/16tE4m71RKFbat-YL1jrLsz-DRbmrbN6J/preview" width="100%" height="300px" frame-border="0" alt="Graphic"></iframe>
+
+        <li>Buat Measure baru menggunakan formula <b>“YTD Year = FORMAT(MAX(Actuals[Date]), "yyyy") & " YTD"”</b>, lalu drag-and-drop <b>“YTD Year”</b> menuju card tersebut. Ilustrasi card yang terbentuk akan muncul seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1GKFMjKicQK1SsjtAhMj63-cWJbonBXMf/preview" width="100%" height="300px" frame-border="0" alt="YTD"></iframe>
+
+        <li>Tambahkan Slicer untuk region dengan memilih ikon <iframe src="https://drive.google.com/file/d/1DCZmKTkcM_PDb0xz0ZOTCLPI38iwFfot/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Slicer"></iframe> pada panel Visualization seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1bf5MiIXqpK3rsVrMpveVgAjdjje48TLl/preview" width="100%" height="300px" frame-border="0" alt="Slicer"></iframe>
+
+        <li>Lakukan Drag-and-drop <b>“Region”</b> pada tabel “Region” menuju card yang muncul. Pilih ikon <iframe src="https://drive.google.com/file/d/1T-yRZjX4C1TLA21bK7ygeTNVTcbXaUe5/preview" width="20px" height="20px" style="vertical-align: middle; display: inline;" frame-border="0" alt="Icon Visualization"></iframe> pada panel <b>“Visualization”</b>, pilih “Slicer Setting”, pada <b>Option > Style</b> pilih <b>“Dropdown”</b> seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1dd7q04f1_bJlAjWLK6KpX1GNUFKFas7o/preview" width="100%" height="300px" frame-border="0" alt="Dropdown"></iframe>
+
+        <li>Slicer yang muncul akan seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/11Sj4yiLY_usHnT9R51rUQ3ePn9DVprao/preview" width="100%" height="300px" frame-border="0" alt="Region"></iframe>
+
+        <li>Sesuaikan dan atur layout dan size dari masing-masing grafik yang telah muncul, hasil report akan seperti ilustrasi di bawah</li>
+        <iframe src="https://drive.google.com/file/d/1pqZx03O4d7Lm7Mr1LOEM7wUwVf02wEi-/preview" width="100%" height="300px" frame-border="0" alt="Dashboard"></iframe>
+     </ol>
+
+     <p>
+        Berikut adalah video langkah-langkah praktik keseluruhan membuat report menggunakan Power BI.
+     </p>
+     <iframe src="https://drive.google.com/file/d/1gaIHJjeWy2k4e4LOpNae5_2iThXTXBDG/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    
+</div>
+
+</body>
+
+</html>

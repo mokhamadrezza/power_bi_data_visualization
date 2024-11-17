@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Data dalam Power BI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="Judul">Get Data dalam Power BI</h1>
+        </div>
+<style>
+    
+body{
+    background-color: #fff;
+}
+
+.container{
+    background-color: #fff;
+    padding-top: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 3%;
+}
+
+.container .header{
+    color: black;
+}
+
+.Judul{
+    font-size: 2.6vw;
+    text-align: left;
+    font-weight: bolder;
+    margin: 1%;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+.content-box{
+    max-width: 90vw;
+    min-width: 30%;
+    border: 0.1vw solid #4471C4;
+    background-color: #fff;
+    box-shadow: 0.4vw 0.4vw 1.5vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.2vw;
+    margin: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    text-align: justify;
+}
+
+.content-box h2{
+    font-size: x-large;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: inline-flex;
+    align-content: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    max-width: 90vw;
+}
+
+.content-box ul{
+    list-style-type: disc;
+    padding-left: 2.5%;
+    margin-left: 1%;
+    font-size: 16px;
+    line-height: 2.5;
+    max-width: 90vw;
+}
+
+.content-box ul li{
+    max-width: 90vw;
+}
+
+.top-box{
+    margin-bottom: 0.5%;
+    max-width: 90vw;
+}
+
+.no-bullets{
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 90vw;
+}
+
+.no-bullets ul{
+    padding-left: 3%; /* Menambahkan indentasi untuk daftar bersarang */
+    max-width: 90vw;
+}
+
+.note-box{
+    display: flex;
+    max-width: 90vw;
+    height: auto;
+    padding: 1%;
+    border-radius: 1vw;
+    border: 0.1vw solid #000;
+    background-color: #CFE1F3; /* Warna latar belakang seperti catatan */
+    box-shadow: 0.3vw 0.3vw 1vw rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Arial, sans-serif;
+    position: relative;
+}
+
+.note-box span {
+    margin-top: 0%;
+    font-size: 1.6vw;
+    font-family: calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+    font-weight: bolder;
+}
+
+.note-box h2{
+    margin-top: 0;
+    max-width: fit-content;
+    font-size: 30px;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+
+.note-box p{
+    margin: 0;
+    max-width: 90vw;
+    font-size: 1.4vw;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+}
+/* Style for h1 */
+h1{
+    font-size: 1.6vw; /* Ukuran font 20 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    color: #1f2855;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for h2 */
+h2{
+    font-size: 1.8vw; /* Ukuran font 18 */
+    font-weight: bolder;
+    font-family: Calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/*Style for h3 */
+h3 {
+    font-size: 1.6vw;
+    font-weight: bolder;
+    font-family: calibri, Arial, sans-serif;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    line-height: 1.5; /*Jarak spasi 1/5 */
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for p */
+p{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+/* Style for ul and ol */
+ul, ol{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    max-width: 90vw;
+}
+/* Style for li */
+li{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: justify;
+    margin-right: 1%;
+    max-width: 90vw;
+}
+
+.small-text{
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.large-text {
+    line-height: 1.5; /* Jarak Spasi 1.5 */
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    vertical-align: top;
+}
+
+.Tools{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.Tipe{
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin-left: 0%;
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+}
+
+.pic {
+    display: block;
+    margin: 0;
+    padding: 20px;
+    height: auto;
+}
+
+iframe{
+    max-width: 75%;
+    min-height: auto;
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    margin-right: 1%;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 0.1vw solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    line-height: 1.5; /* Jarak spasi 1.5 */
+    font-size: 12px;
+}
+th {
+    background-color: #2796a3; /* Warna Latar Belakang untuk Baris Pertama */
+    color: white;
+    text-align: center;
+    font-size: 14px;
+}
+tr:hover {
+    background-color: beige;
+}
+
+font {
+    max-width: 100%;
+}
+
+.kotak {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 1.5vw;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #2796a3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<div class="content-box"> <!-- Berisi Poin-poin Konten-->
+    <h2>
+        <img src="https://drive.google.com/thumbnail?id=1OSwy6Vn5jv8ERj5uV-d5abA8LFGNXV9x" alt="Content Image" style="vertical-align: middle; margin-right: 10px; max-width: 40px; max-height: 40px; padding-top: 10px;">Content
+    </h2>
+    <ul class="no-bullets" style="color: blue;">
+        <li><a href="#data-dalam-power-bi" target="_blank" style="color: blue;">Data dalam Power BI</a></li>
+        <li><a href="#dataset-dalam-power-bi" target="_blank" style="color: blue;">Dataset dalam Power BI</a></li>
+        <li><a href="#mengenal-power-query" target="_blank" style="color: blue;">Mengenal Power Query</a></li>
+        <li><a href="#metode-menghubungkan-data-pada-power-bi" target="_blank" style="color: blue;">Metode menghubungkan  Data pada Power BI</a></li>
+        <li><a href="#mendapatkan-data-dalam-power-bi" target="_blank" style="color: blue;">Mendapatkan Data dalam Power BI</a></li>
+        <li><a href="#permasalahan-yang-sering-muncul-dalam-proses-import-data" target="_blank" style="color: blue;">Permasalahan yang Sering Muncul dalam Proses Import Data</a></li>    
+    </ul>
+        
+</div>
+
+<div class="content-box">
+    <!--Point 1-->
+    <h1 id="#data-dalam-power-bi">Data dalam Power BI</h2>
+    <p>
+        <b>Data adalah sekumpulan keterangan atau fakta yang diperoleh melalui pengamatan, pencarian, atau pengukuran dari sumber-sumber tertentu</b>. 
+        Keterangan-keterangan ini dapat berupa kata-kata, kalimat, simbol, angka, citra, atau properti lainnya.
+    </p>
+    
+    <!--Point 2-->
+    <h1 id="dataset-dalam-power-bi">Dataset dalam Power BI</h1>
+    <p>
+        Power BI merupakan aplikasi yang bertujuan untuk menampilkan informasi secara visual dari suatu dataset. 
+        Dataset yang mendasari visualisasi dan laporan di Power BI berasal dari kumpulan data yang diperoleh dari data source.
+    </p>
+
+    <iframe src="https://drive.google.com/file/d/1V9br7xlu5dDKiYoy9O9Zxiq8FU73fJrp/preview" width="100%" height="300px" frame-border="0" alt="Get Data"></iframe>
+
+    <p>
+        Terdapat tujuh (7) kategori konektivitas dataset dalam Power BI yang dapat digunakan oleh pengguna dengan lebih dari 500 konektor, diantaranya yaitu:
+    </p>
+    
+    <ol type="1">
+        <li>
+            Flat File
+        </li>
+        <p>
+            <b>Flat file merupakan sarana penyimpanan sederhana untuk data tabel tetapi tidak memuat hubungan antar tabel di dalamnya</b>. 
+            Flat file mencakup file Excel, teks/CSV, PDF, file JSON, dan lain-lain. Dataset pada Flat file tersebut diimpor ke dalam kumpulan data Power BI. 
+            Mengimpor data berarti data disimpan dalam file Power BI dan dipublikasikan bersama dengan report Power BI.
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/1vD53ZDRRT85MtdaJLUQ9YC9ZljoEzRM7/preview" width="100%" height="300px" frame-border="0" alt="Flat File"></iframe>
+
+        <p class="kotak" style="color: #fff;">
+            <b>Note:</b>
+            <br><b>Pendekatan Flat file mungkin tidak cocok untuk semua organisasi atau ketika pengguna memiliki volume data yang besar.</b>
+        </p>
+
+        <li>
+            Database
+        </li>
+        <p>
+            <b>Database merupakan kumpulan data yang dikelola sedemikian rupa berdasarkan ketentuan tertentu yang saling berhubungan sehingga mudah dalam pengelolaannya</b>. 
+            Beberapa database yang cukup terkenal adalah SQL Server, MySQL, OracleDB, PostgreSQL, IBM, dan lain-lain. 
+            Data yang disimpan dalam database biasanya besar dan mungkin memerlukan waktu yang sangat lama untuk dimuat saat diimpor ke Power BI.
+        </p>
+        <p>
+            Power BI mengatasi masalah waktu yang lama untuk memuat data dengan menggunakan mode penyimpanan DirectQuery, yang memungkinkan pengguna untuk melakukan kueri data langsung dari sumber data tanpa mengimpor salinan ke dalam Power BI. 
+            DirectQuery berguna karena memastikan pengguna selalu melihat versi data yang paling baru (terkini).
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/1uzUlDNJhqlVDOdZa67g5vRdl1MmB9mZs/preview" width="100%" height="300px" frame-border="0" alt="Database"></iframe>
+
+        <li>
+            Microsoft Fabric
+        </li>
+        <p>
+            <b>Microsoft Fabric adalah sebuah produk yang terintegrasi dengan Power BI dan merupakan platform analitik yang berfokus pada pengalaman pengguna</b>. 
+            Microsoft Fabric memungkinkan pengguna untuk menggabungkan semua data dan analitik organisasi dalam satu tempat.
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/1sweTVf9G_I0JY07mC4vWhUd1sCTJceWK/preview" width="100%" height="300px" frame-border="0" alt="Microsoft Fabric"></iframe>
+        
+        <p>
+            Microsoft Fabric terdiri dari beberapa teknologi, seperti Power BI dataset, Dataflows, Datamarts, Warehouses, Lakehouses, KQL Database, yang digabungkan menjadi satu platform SaaS yang terpadu.
+        </p>
+
+        <li>
+            Power Platform
+        </li>
+
+        <p>
+            <b>Power Platform pada Power BI berfungsi untuk menggabungkan data dari berbagai sumber dan membuat aplikasi bisnis yang dapat diintegrasikan dengan Power BI</b>. 
+            Dengan Power Platform, pengguna dapat menggabungkan data dari berbagai sumber dan membuat aplikasi bisnis yang dapat diintegrasikan dengan Power BI. 
+            Hal ini memungkinkan pengguna untuk membuat keputusan bisnis yang lebih baik dan lebih cepat
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/1tjiXR1XWShOQlQYYLb_EfBddLN2TfNzh/preview" width="100%" height="300px" frame-border="0" alt="Power Platform"></iframe>
+
+        <li>
+            Azure
+        </li>
+
+        <p>
+            Azure adalah adalah layanan cloud yang digunakan untuk memproses dan mengelola data. 
+            <b>Azure dan Power BI dapat terintegrasi bersama dalam  pemrosesan data hingga analitik dan laporan</b>.
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/1yG94J2XgPCCFdFvHKbYNefuRBIRQTvpG/preview" width="100%" height="300px" frame-border="0" alt="Azure"></iframe>
+
+        <p>
+            Azure Synapse adalah layanan analitik enterprise yang menggabungkan teknologi SQL untuk data warehousing, teknologi Spark untuk big data, serta fitur Data Explorer untuk analitik log dan time series. 
+            Selain itu, Azure Synapse memiliki fitur Pipelines yang memungkinkan integrasi data dan proses ETL/ELT.
+        </p>
+        <p>
+            Power BI merupakan salah satu layanan yang sudah secara sudah secara alami terintegrasi dengan Azure Synapse sehingga memungkinkan pengguna untuk mempercepat kinerja dengan solusi bisnis dan manajemen data yang efisien.
+        </p>
+
+        <li>
+            Online Services
+        </li>
+
+        <p>
+            <b>Power BI memberikan fitur bagi pengguna untuk mendapatkan data dari layanan online lain dan memanfaatkannya dalam laporan dan visualisasi</b>. 
+            Menggunakan data dari layanan online mirip dengan menggunakan flat file, namun data ini dapat diperbarui langsung dari sumber layanan online tersebut sehingga memerlukan kredensial untuk terhubung. 
+            Layanan online ini mencakup Google Drive, SharePoint Online, Salesforce.
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/1P-BxX_ryxwmOdHhMGN2QfXYevor_IwgH/preview" width="100%" height="300px" frame-border="0" alt="Online Services"></iframe>
+
+        <li>
+            Other (Layanan Lain)
+        </li>
+
+        <p>
+            Pada Power BI terdapat fitur bagi pengguna untuk mendapatkan data dari platform atau program lain seperti mengintegrasikannya dengan Python dan R, menggunakan layanan cloud lain, hingga mendapatkan data dari website menggunakan Uniform Resource Locator (URL) pada website tersebut.
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/14QqRCuIp9OI90bBSzhPbFINVVXvH03MI/preview" width="100%" height="300px" frame-border="0" alt="Other (Layanan Lain)"></iframe>
+    </ol>
+    
+
+    <!--Point 3-->
+    <h1 id="mengenal-power-query">Mengenal Power Query</h1>
+    <p>
+        Data yang diimpor pada power BI akan diproses pada Power Query sebelum masuk pada tahap analisis dan visualisasi data. 
+        <b>Power Query adalah alat bisnis yang tersedia di Excel dan Power BI yang memungkinkan pengguna mengimpor data dari berbagai sumber, lalu membersihkan, mentransformasi, dan menyusun ulang data sesuai kebutuhan.</b>
+    </p>
+    <iframe src="https://drive.google.com/file/d/1-NclGuGwVYLA1FqFWV9PugXr2qWn7i2g/preview" width="100%" height="300px" frame-border="0" alt="Other (Layanan Lain)"></iframe>
+
+    <p>
+        Power Query memiliki banyak fitur untuk membantu pengguna membersihkan dan menyiapkan data untuk analisis. 
+        Power Query adalah mesin transformasi data dan persiapan data.
+    </p>
+    <p>
+        Power Query dilengkapi dengan antarmuka grafis untuk mengambil data dari sumber dan Power Query Editor untuk menerapkan transformasi. 
+        Dengan menggunakan Power Query, pengguna dapat melakukan pemrosesan ekstraksi, transformasi, dan pemuatan (ETL) data.
+    </p> 
+
+    <!-- Point 4 -->
+     <h1 id="metode-menghubungkan-data-pada-power-bi">Metode Menghubungkan  Data pada Power BI</h1>
+     <p>
+        Power BI memberikan beberapa metode untuk menghubungkan data sebelum melakukan proses analisis, berikut adalah perbedaanya:
+     </p>
+     <table>
+        <tr>
+            <th>Aspek</th>
+            <th>DirectQuery</th>
+            <th>Live Connection</th>
+            <th>Import</th>
+        </tr>
+        <tr>
+            <td>Akses Data</td>
+            <td>Power BI menghubungkan langsung ke sumber data yang ada, seperti database SQL, dan menjalankan kueri langsung ke sumber data saat melakukan visualisasi atau analisis</td>
+            <td>Power BI langsung ke sumber data, tetapi data disimpan di cache sementara di Power BI Service</td>
+            <td>Data diekstraksi dari sumber data dan dimuat ke dalam model data Power BI. Data disimpan secara lokal dalam format kompresi di Power BI Desktop atau Power BI Service.</td>
+        </tr>
+        <tr>
+            <td>Kinerja Real-Time</td>
+            <td>Data diambil secara real-time dari sumber data saat kueri dieksekusi. Ini berarti Anda selalu melihat data terkini</td>
+            <td>Data masih diperbarui secara real-time dari sumber data saat kueri dieksekusi, tetapi ada sedikit penyimpanan cache yang dapat meningkatkan kinerja</td>
+            <td>Karena data disimpan secara lokal, kueri dan visualisasi menjadi lebih cepat. Namun, data perlu diperbarui secara berkala untuk mencerminkan perubahan terbaru dari sumber data</td>
+        </tr>
+        <tr>
+            <td>Transformasi Data</td>
+            <td>Transformasi data terbatas karena data tidak disimpan di Power BI. Semua perhitungan dan transformasi dilakukan di sumber data</td>
+            <td>Transformasi data terbatas karena data utama tetap di sumber data</td>
+            <td>Import memungkinkan transformasi data yang kuat, pemodelan data, dan pembuatan hubungan antara tabel</td>
+        </tr>
+     </table>
+
+    <!-- Point 5 -->
+    <h1 id="mendapatkan-data-dalam-power-bi">Mendapatkan Data dalam Power BI</h1>
+    <p>
+        Pada course ini akan dijelaskan cara menghubungkan power BI melalui Excel, Website, dan Spreadsheet. 
+        Sebelum menghubungkan data pada Power BI unduh <a href="https://docs.google.com/spreadsheets/d/1x6kHvo87biC-FOZNYXGhzJpT2IxGP-wn/edit?usp=drive_link&ouid=101920292231313062113&rtpof=true&sd=true" target="_blank" style="color: blue;">data source Superstore</a> yang akan digunakan di modul ini.
+    </p>
+
+    <iframe src="https://drive.google.com/file/d/1XGhWmz9_KTNw_OIJ_fCakvAfAdbDwsfq/preview" width="100%" height="300px" frame-border="0" alt="Data Source Superstore"></iframe>
+
+    <p>
+        Data Super store merupakan salah satu open dataset yang tersedia dan memuat informasi tentang penjualan & keuntungan Superstore.
+    </p>
+
+    <h2>Menghubungkan File Excel</h2>
+    <p>
+        Untuk menghubungkan dataset yang telah diunduh sebelumnya ke dalam Power BI dapat menggunakan langkah langkah berikut di bawah ini:
+    </p>
+
+    <ol type="1">
+        <li>
+            Buka program Power BI Desktop  yang telah terinstal.
+        </li>
+        <li>
+            Pada program yang terbuka pilih “Excel workbook” pada bagian “Select a data source or start with a blank report” karena akan digunakan format file Excel untuk dataset seperti ilustrasi di bawah ini.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1t5OC2xbLex-dF4JKqctEPbenVfbGdGdO/preview" width="100%" height="300px" frame-border="0" alt="Excel Workbook"></iframe>
+
+        <li>
+            Setelah memilih tautan "Microsoft Excel", jendela "Open" akan terbuka, pilih lembar kerja/file yang sesuai untuk digunakan dalam Power BI seperti ilustrasi di bawah ini.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1H5oEOnyodSazvD9jqIeX9jxw3jLBjsmu/preview" width="100%" height="300px" frame-border="0" alt="Open File"></iframe>
+
+        <li>
+            Setelah file terhubung pada Power BI, akan muncul seperti dibawah ini, atau disebut Window Navigator untuk memilih dataset yang akan digunakan.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1FZzWhK-Nl2A3SjkboJCuv6yif7pdWE_y/preview" width="100%" height="300px" frame-border="0" alt="Window Navigator"></iframe>
+
+        <li>
+            Pilih dataset yang akan digunakan pada window Navigator, lalu pilih “Load”, dan akan muncul Window Processing Queries yang menampilkan status transformasi dan menghubungkan data seperti ilustrasi di bawah ini.
+        </li>
+        <iframe src="https://drive.google.com/file/d/1CU20Qcr5uCsKj7M5sL7QIF5se8KhyNd6/preview" width="100%" height="300px" frame-border="0" alt="Window Navigator"></iframe>
+
+        <p>
+            Berikut adalah video langkah-langkah praktik keseluruhan menghubungkan file Excel pada Power BI.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1r4GSULUw3ruhdQkGdiHcGXltGI2zVggZ/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    </ol>
+
+    <h2>Menghubungkan Data dari Website</h2>
+    <p>
+        Selain menggunakan data dari file Excel, Power BI dapat menggunakan data dari website menggunakan Uniform Resource Locator (URL). 
+        Berikut adalah langkah-langkah untuk menghubungkan file dari website:
+    </p>
+    <ol type="1">
+        <li>Buka program Power BI Desktop  yang telah terinstal.</li>
+        <li>Pada program yang terbuka pilih “Get data from other sources” pada bagian “Select a data source or start with a blank report” karena akan digunakan format lain untuk dataset seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1kse9411Zc1iR9VM_29WW4ki_jPJM2YKf/preview" width="100%" height="300px" frame-border="0" alt="Get Data from Other Source"></iframe>
+
+        <li>Pilih menu Other pada window Get Data, lalu pilih website untuk menghubungkan data dari website, dan pilih connect.</li>
+        <iframe src="https://drive.google.com/file/d/1JHlsvNJ7prDMkkELVCZzYhjJdzLpsU7z/preview" width="100%" height="300px" frame-border="0" alt="Menu Other"></iframe>
+
+        <li>
+            Akan muncul window From Web, lalu masukkan URL website yang berisi dataset yang akan dihubungkan pada Power BI. 
+            Pada modul ini akan dicontohkan untuk data populasi pada Worldometer dengan URL <a href="https://www.worldometers.info/world-population/population-by-country/" target="_blank">https://www.worldometers.info/world-population/population-by-country/</a>
+        </li>
+        <iframe src="https://drive.google.com/file/d/1dcaBT5wDAzfnjxcHokUG5OLBRn5aFXvN/preview" width="100%" height="300px" frame-border="0" alt="From Web"></iframe>
+
+        <li>Pilih OK setelah memasukkan URL yang sesuai.</li>
+        <li>Selanjutnya akan muncul window Connecting yang memuat status Power BI sedang menghubungkan dengan data pada Website.</li>
+        <iframe src="https://drive.google.com/file/d/1TSVCZ-o-mz4DBb-qQBNFl3v26wEZAbYl/preview" width="100%" height="300px" frame-border="0" alt="Connecting"></iframe>
+
+        <li>Setelah data terhubung pada Power BI, akan muncul Window Navigator untuk memilih dataset yang akan digunakan seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1sSln-GPFOE75Y3DWg4Zeq7vcgJPKPUPy/preview" width="100%" height="300px" frame-border="0" alt="Connecting"></iframe>
+
+        <li>Akan muncul Window load yang menampilkan status transformasi dan menghubungkan data.</li>
+        <iframe src="https://drive.google.com/file/d/1eaEn60AcBsUGX5W7wLnrccj2x0QIkV8c/preview" width="100%" height="300px" frame-border="0" alt="Load"></iframe>
+
+        <li>Dataset yang sudah terhubung akan muncul pada Window Data, dan terdapat informasi mengenai kolom yang terdapat pada dataset yang digunakan.</li>
+        <iframe src="https://drive.google.com/file/d/1kcxNZ25Ag7OjukcRfI1qfqGxJoemwQFw/preview" width="100%" height="300px" frame-border="0" alt="Data Table 1"></iframe>
+
+        <p>
+            Berikut adalah video langkah-langkah praktik keseluruhan menghubungkan data dari website pada Power BI.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1ohc8siQJDhC-fl9T33ybEJDJyZ7skQYY/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    </ol>
+
+    <h2>Menghubungkan Data dari Google Sheets</h2>
+    <p>
+        Selain menggunakan data dari file Excel dan Website, Power BI dapat menggunakan data dari Google Sheet.
+    </p>
+    <p class="kotak" style="color: #fff;">
+        <b>Note:</b>
+        <br><b>Format file tidak boleh dalam bentuk .csv, .xlsx, .xls tetapi harus dalam spreadsheet google.</b>
+    </p>
+    <p>
+        Berikut adalah langkah-langkah untuk menghubungkan file dari Google Sheet:
+    </p>
+    <ol type="1">
+        <li>Buka program Power BI Desktop  yang telah terinstal.</li>
+        <li>Pada program yang terbuka pilih “Get data from other sources” pada bagian “Select a data source or start with a blank report” karena akan digunakan format lain untuk dataset seperti ilustrasi di bawah ini.</li>
+        <iframe src="https://drive.google.com/file/d/1kse9411Zc1iR9VM_29WW4ki_jPJM2YKf/preview" width="100%" height="300px" frame-border="0" alt="Get Data from Other Source"></iframe>
+
+        <li>Pilih menu Get Data, lalu pada bar pencarian ketikkan Google Sheets, dan pilih Google Sheets untuk menghubungkan data dari Google Spreadsheet, dan pilih connect.</li>
+        <iframe src="https://drive.google.com/file/d/1ksTYb7R65Py2d_x9pZbp_z3kj_U5DRH_/preview" width="100%" height="300px" frame-border="0" alt="Get Data"></iframe>
+
+        <li>Masukkan url dataset Global Superstore terlampir pada window Google Sheet yang muncul lalu pilih ok seperti ilustrasi di bawah.</li>
+        <iframe src="https://drive.google.com/file/d/1uYBZQdHXN57pz7akpv69BY9o90FPS_Fk/preview" width="100%" height="300px" frame-border="0" alt="GSheet URL"></iframe>
+
+        <li>Sign in ke akun Google dengan memilih “Sign In” apabila belum masuk ke akun Google.</li>
+        <iframe src="https://drive.google.com/file/d/1GmNm4t_DxTEPBo74LXl_KYHmsYMNlM9R/preview" width="100%" height="300px" frame-border="0" alt="Sign In"></iframe>
+
+        <li>Pilih Connect apabila sudah masuk ke akun google masing-masing.</li>
+        <iframe src="https://drive.google.com/file/d/1rDbMgiZLPCl6M1mCMz9f_9UGVhIWOvtS/preview" width="100%" height="300px" frame-border="0" alt="Connect Account"></iframe>
+
+        <li>Pilih dataset yang akan digunakan pada window Navigator, lalu pilih “Load”, dan akan muncul Window Load yang menampilkan status transformasi dan menghubungkan data.</li>
+        <iframe src="https://drive.google.com/file/d/1aC8evHxuCTjjKxB6QLOsd3yKVIcUh07r/preview" width="100%" height="300px" frame-border="0" alt="Window Load"></iframe>
+
+        <li>Dataset yang sudah terhubung akan muncul pada Window Data, dan informasi mengenai kolom dataset dapat dilihat dengan mengklik masing-masing dataset tersebut.</li>
+        <iframe src="https://drive.google.com/file/d/1sji55Zs1qKk4-pUycnIFTf7ltlpDvaRS/preview" width="100%" height="300px" frame-border="0" alt="Window Data"></iframe>
+
+        <p>
+            Berikut adalah video langkah-langkah praktik keseluruhan menghubungkan data dari Google Sheets pada Power BI.
+        </p>
+        <iframe src="https://drive.google.com/file/d/1pZJ4Pik7cr2Nx5y8N2uwLGL4bP-ueKSn/preview" width="100%" height="400px" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    </ol>
+
+    <h1 id="permasalahan-yang-sering-muncul-dalam-proses-import-data">Permasalahan yang Sering Muncul dalam Proses Import Data</h1>
+    <p>
+        Ketika menghubungkan data pada power BI terkadang terdapat beberapa permasalahan yang cukup sering muncul. Beberapa permasalah tersebut adalah:
+    </p>
+    <ol type="1">
+        <li>
+            <b>Time-out expired</b>: Permasalahan ini muncul ketika menggunakan database yang cukup besar sehingga memerlukan waktu lebih lama untuk menghubungkan data. 
+            Untuk mengatasinya dapat beralih ke versi berbayar untuk menambah batas waktu.
+        </li>
+        <li>
+            <b>The data format is not valid</b>: Permasalahan ini muncul ketika pengguna mengimpor format data yang tidak valid atau tidak sesuai pada Power BI. 
+            Untuk mengatasinya dapat memperbaiki file data terlebih dahulu sebelum dihubungkan pada Power BI.
+        </li>
+        <li>
+            <b>Missing data files</b>:  Permasalahan ini muncul ketika file yang digunakan pada power BI tidak dapat ditemukan, umumnya dikarenakan berpindah directory atau file hilang. 
+            Untuk mengatasinya dapat mengatur ulang direktori yang digunakan dan memastikan file tersedia.
+        </li>
+    </ol>
+
+
+</div>
